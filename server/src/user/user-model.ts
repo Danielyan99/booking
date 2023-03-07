@@ -6,7 +6,7 @@ export class User extends Document {
   @Prop()
   name: string;
 
-  @Prop({ unique: [true, 'Duplicate email entered'] })
+  @Prop({ required: true, unique: true })
   email: string;
 
   @Prop()

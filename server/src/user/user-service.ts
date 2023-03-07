@@ -6,6 +6,7 @@ import * as mongoose from 'mongoose';
 import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { SigninDto } from './dto/signin.dto';
+import { TokenService } from '../token/token-service';
 
 @Injectable()
 export class UserService {
@@ -13,24 +14,32 @@ export class UserService {
     @InjectModel(User.name)
     private userModel: mongoose.Model<User>,
     private jwtService: JwtService,
+    private tokenService: TokenService,
   ) {}
 
-  async signup(userDto: SignupDto): Promise<{ token: string }> {
+  async signup(userDto: SignupDto) {
     const { name, email, password } = userDto;
+    const user = await this.userModel.findOne({ email });
+
+    if (user) {
+      throw new UnauthorizedException('Email is already registered');
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log(email, password, name);
-    const user = await this.userModel.create({
+
+    const createdUser = await this.userModel.create({
       email,
       password: hashedPassword,
       name,
     });
 
-    const token = this.jwtService.sign({ id: user._id });
+    const tokens = this.tokenService.generateTokens({ ...userDto });
+    await this.tokenService.saveToken(createdUser._id, tokens.refreshToken);
 
-    return { token };
+    return { ...tokens, user: userDto };
   }
 
-  async signin(userDto: SigninDto): Promise<{ token: string }> {
+  async signin(userDto: SigninDto) {
     const { email, password } = userDto;
     const user = await this.userModel.findOne({ email });
 
@@ -44,13 +53,15 @@ export class UserService {
       throw new UnauthorizedException('Invalid email or password');
     }
 
-    const token = this.jwtService.sign({ id: user._id });
+    const tokens = this.tokenService.generateTokens({ ...userDto });
+    await this.tokenService.saveToken(user._id, tokens.refreshToken);
 
-    return { token };
+    return { ...tokens, user };
   }
 
-  logout() {
-    console.log('logout');
+  async logout(refreshToken) {
+    const token = await this.tokenService.removeToken(refreshToken);
+    return token;
   }
 
   refresh() {
@@ -60,10 +71,5 @@ export class UserService {
   async findAll(): Promise<User[]> {
     const users = await this.userModel.find();
     return users;
-  }
-
-  validateUser(username) {
-    console.log('Validate User');
-    return { user: 'asdasdasd' };
   }
 }

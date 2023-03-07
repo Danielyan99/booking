@@ -6,6 +6,8 @@ import { UserSchema } from './user-model';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { TokenService } from '../token/token-service';
+import { TokenSchema } from '../token/token-model';
 
 @Module({
   imports: [
@@ -22,8 +24,9 @@ import { ConfigService } from '@nestjs/config';
       },
     }),
     MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
+    MongooseModule.forFeature([{ name: 'Token', schema: TokenSchema }]),
   ],
   controllers: [UserController],
-  providers: [UserService],
+  providers: [UserService, TokenService],
 })
 export class UserModule {}
