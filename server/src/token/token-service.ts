@@ -29,8 +29,16 @@ export class TokenService {
     return token;
   }
 
+  validateRefreshToken(token) {
+    return this.jwtService.verify(token, { secret: process.env.JWT_REFRESH_SECRET });
+  }
+
   async removeToken(refreshToken) {
     const tokenData = await this.tokenModel.deleteOne({ refreshToken });
     return tokenData;
+  }
+
+  findToken(refreshToken) {
+    return this.tokenModel.findOne({ refreshToken });
   }
 }

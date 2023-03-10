@@ -13,4 +13,8 @@ export class SignupDto {
   @IsString()
   @MinLength(6)
   readonly password: string;
+  constructor(model) {
+    this.email = model.email;
+    this.name = model.name;
+  }
 }

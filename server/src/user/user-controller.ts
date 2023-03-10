@@ -33,8 +33,11 @@ export class UserController {
   }
 
   @Post('/refresh')
-  refresh() {
-    this.userService.refresh();
+  async refresh(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
+    const { refreshToken } = req.cookies;
+    const userData = await this.userService.refresh(refreshToken);
+    res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+    return userData;
   }
 
   @Get('/users')

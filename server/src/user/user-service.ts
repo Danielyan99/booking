@@ -7,6 +7,7 @@ import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { SigninDto } from './dto/signin.dto';
 import { TokenService } from '../token/token-service';
+import { UserDto } from './dto/user.dto';
 
 @Injectable()
 export class UserService {
@@ -64,8 +65,20 @@ export class UserService {
     return token;
   }
 
-  refresh() {
-    console.log('refresh');
+  async refresh(refreshToken) {
+    if (!refreshToken) {
+      throw new UnauthorizedException();
+    }
+    const userData = this.tokenService.validateRefreshToken(refreshToken);
+    const tokenFromDB = await this.tokenService.findToken(refreshToken);
+    if (!userData || !tokenFromDB) {
+      throw new UnauthorizedException();
+    }
+    const user: UserDto = await this.userModel.findById(userData.id);
+    const tokens = this.tokenService.generateTokens(user);
+
+    await this.tokenService.saveToken(user.id, tokens.refreshToken);
+    return { ...tokens, user };
   }
 
   async findAll(): Promise<User[]> {
