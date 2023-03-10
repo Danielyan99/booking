@@ -8,6 +8,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { TokenService } from '../token/token-service';
 import { TokenSchema } from '../token/token-model';
+import { JwtStrategy } from '../strategies/jwt-strategy';
 
 @Module({
   imports: [
@@ -27,6 +28,6 @@ import { TokenSchema } from '../token/token-model';
     MongooseModule.forFeature([{ name: 'Token', schema: TokenSchema }]),
   ],
   controllers: [UserController],
-  providers: [UserService, TokenService],
+  providers: [UserService, TokenService, JwtStrategy],
 })
 export class UserModule {}

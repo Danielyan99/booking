@@ -1,9 +1,10 @@
-import { Body, Controller, Get, Post, Res, Req } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res, Req, UseGuards } from '@nestjs/common';
 import { UserService } from './user-service';
 import { SignupDto } from './dto/signup-dto';
 import { User } from './user-model';
 import { SigninDto } from './dto/signin.dto';
 import { Response, Request } from 'express';
+import { JwtAuthGuard } from '../guards/jwt-auth-guard';
 
 @Controller('auth')
 export class UserController {
@@ -40,6 +41,7 @@ export class UserController {
     return userData;
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('/users')
   async getAllUsers(): Promise<User[]> {
     return await this.userService.findAll();
