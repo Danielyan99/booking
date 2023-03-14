@@ -19,7 +19,7 @@ export class UserService {
   ) {}
 
   async signup(userDto: SignupDto) {
-    const { name, email, password } = userDto;
+    const { name, email, password, role } = userDto;
     const user = await this.userModel.findOne({ email });
 
     if (user) {
@@ -32,6 +32,7 @@ export class UserService {
       email,
       password: hashedPassword,
       name,
+      role,
     });
 
     const tokens = this.tokenService.generateTokens({ ...userDto });
@@ -54,7 +55,7 @@ export class UserService {
       throw new UnauthorizedException('Invalid email or password');
     }
 
-    const tokens = this.tokenService.generateTokens({ ...userDto });
+    const tokens = this.tokenService.generateTokens({ name: user.name, email, password, role: user.role });
     await this.tokenService.saveToken(user._id, tokens.refreshToken);
 
     return { ...tokens, user };
