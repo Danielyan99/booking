@@ -5,6 +5,9 @@ import { User } from './user-model';
 import { SigninDto } from './dto/signin.dto';
 import { Response, Request } from 'express';
 import { JwtAuthGuard } from '../guards/jwt-auth-guard';
+import { RolesGuard } from '../guards/roles.guard';
+import { Roles } from '../roles/roles.decorator';
+import { RolesEnum } from '../roles/roles.enum';
 
 @Controller('auth')
 export class UserController {
@@ -41,8 +44,9 @@ export class UserController {
     return userData;
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('/users')
+  @Roles(RolesEnum.Admin)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   async getAllUsers(): Promise<User[]> {
     return await this.userService.findAll();
   }

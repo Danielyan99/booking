@@ -1,4 +1,5 @@
 import { IsEmail, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import { RolesEnum } from '../../roles/roles.enum';
 
 export class SignupDto {
   @IsNotEmpty()
@@ -13,8 +14,8 @@ export class SignupDto {
   @IsString()
   @MinLength(6)
   readonly password: string;
-  constructor(model) {
-    this.email = model.email;
-    this.name = model.name;
-  }
+
+  @IsNotEmpty()
+  @IsString()
+  role: RolesEnum;
 }
