@@ -1,0 +1,33 @@
+:root {
+  font-size: 20px;
+}
+
+@media screen and (max-width: $media-xxl) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: $media-xl) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: $media-lg) {
+  :root {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: $media-md) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: $media-sm) {
+  :root {
+    font-size: 10px;
+  }
+}

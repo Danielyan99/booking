@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import $api from '@src/shared/api';
 import { AxiosResponse } from 'axios';
 import { AuthResponse } from '@src/app/modules/AuthResponse';

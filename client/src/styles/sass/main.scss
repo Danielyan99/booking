@@ -1,0 +1,34 @@
+// This is the single file output by sass. It is intended to ONLY @import other files.
+
+// abstracts (helpers)
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/functions';
+
+// vendors (tools)
+@import 'vendors/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+// base (basics)
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/common';
+
+// layout
+@import 'layout/navigation';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/sidebar';
+
+// components
+@import 'components/buttons';
+@import 'components/logo';
+
+// pages
+@import 'pages/home';
+@import 'pages/contact';
+@import 'pages/portfolio';
+
+// themes
+@import 'themes/theme';
+@import 'themes/admin';

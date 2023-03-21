@@ -26,6 +26,19 @@
       180,
       { "ignoreTemplateLiterals": true, "ignoreStrings": true }
     ],
-    "import/no-unresolved": "off"
+    "jsx-quotes": ["error", "prefer-single"],
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "import/no-unresolved": "off",
+    "no-param-reassign": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": "off",
+    "object-curly-newline": "off"
   }
 }
