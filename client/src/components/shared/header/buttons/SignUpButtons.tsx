@@ -1,8 +1,8 @@
-import { Button } from 'react-bootstrap';
+import { Button } from 'antd';
 
 function SignUpButton() {
   return (
-    <Button className='sign-up__btn' variant='primary' size='sm'>Register</Button>
+    <Button className='sign-up__btn'>Register</Button>
   );
 }
 

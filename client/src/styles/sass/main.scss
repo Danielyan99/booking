@@ -7,7 +7,6 @@
 
 // vendors (tools)
 @import 'vendors/bootstrap';
-@import "~bootstrap/scss/bootstrap";
 
 // base (basics)
 @import 'base/reset';
@@ -19,6 +18,7 @@
 @import 'layout/header';
 @import 'layout/footer';
 @import 'layout/sidebar';
+@import "layout/container";
 
 // components
 @import 'components/buttons';

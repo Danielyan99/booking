@@ -1,8 +1,8 @@
-import { Button } from 'react-bootstrap';
+import { Button } from 'antd';
 
 function SignInButton() {
   return (
-    <Button className='sign-in__btn' variant='primary' size='sm'>Sign In</Button>
+    <Button>Sign In</Button>
   );
 }
 
