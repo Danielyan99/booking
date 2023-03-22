@@ -1,6 +1,6 @@
 import Logo from '@src/components/shared/header/logo';
-import SignInButton from '@src/components/shared/header/buttons/SignInButton';
-import SignUpButton from '@src/components/shared/header/buttons/SignUpButtons';
+import SignInFeature from '@src/components/features/sign-in-feature';
+import SignUpFeature from '@src/components/features/sign-up-feature';
 
 function Header() {
   return (
@@ -9,8 +9,8 @@ function Header() {
         <div className='header-content'>
           <Logo />
           <div className='header-content__btns'>
-            <SignUpButton />
-            <SignInButton />
+            <SignInFeature />
+            <SignUpFeature />
           </div>
         </div>
       </div>
