@@ -23,6 +23,7 @@
 // components
 @import 'components/buttons';
 @import 'components/logo';
+@import 'components/select';
 
 // pages
 @import 'pages/home';
@@ -32,3 +33,9 @@
 // themes
 @import 'themes/theme';
 @import 'themes/admin';
+
+:global {
+  .ant-select-dropdown {
+    display: none !important;
+  }
+}

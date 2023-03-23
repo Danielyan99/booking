@@ -1,6 +1,7 @@
 import Logo from '@src/components/shared/header/logo';
 import SignInFeature from '@src/components/features/sign-in-feature';
 import SignUpFeature from '@src/components/features/sign-up-feature';
+import LanguagesSelector from '@src/components/shared/header/languages-selector';
 
 function Header() {
   return (
@@ -9,6 +10,7 @@ function Header() {
         <div className='header-content'>
           <Logo />
           <div className='header-content__btns'>
+            <LanguagesSelector />
             <SignInFeature />
             <SignUpFeature />
           </div>

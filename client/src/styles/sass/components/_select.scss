@@ -1,0 +1,18 @@
+.ant-select .ant-select-selection-item {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.language-select {
+  .ant-select-item-option-content {
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: 0.4rem;
+    }
+  }
+}
