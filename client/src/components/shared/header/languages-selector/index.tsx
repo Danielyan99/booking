@@ -11,7 +11,7 @@ function LanguagesSelector() {
   const changeLanguageHandler = (value: string) => {
     Router.push(Router.asPath, Router.asPath, { locale: value });
   };
-  console.log(Router.locale);
+
   return (
     <Select
       style={{ width: 120 }}

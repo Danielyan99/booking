@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import TopSection from '@src/components/pages/main/top-section';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { memo } from 'react';
 
-export default function Home() {
+function Home() {
   return (
     <div className='home'>
       <Head>
@@ -23,3 +24,5 @@ export async function getStaticProps({ locale }: { locale: string}) {
     },
   };
 }
+
+export default memo(Home);
