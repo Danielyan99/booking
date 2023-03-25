@@ -7,7 +7,7 @@ interface props {
 
 function Layout({ children }: props) {
   return (
-    <div className="content">
+    <div className='content'>
       <Header />
       {children}
     </div>

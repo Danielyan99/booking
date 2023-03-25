@@ -1,4 +1,4 @@
-import {memo, useState} from 'react';
+import { memo, useState } from 'react';
 import SignInModal from '@src/components/modals/sign-in-modal';
 import SignInButton from '@src/components/shared/header/buttons/sign-in-button';
 

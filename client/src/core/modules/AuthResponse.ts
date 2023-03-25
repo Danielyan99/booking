@@ -1,4 +1,4 @@
-import { IUser } from '@src/app/modules/IUser';
+import { IUser } from '@src/core/modules/IUser';
 
 export interface AuthResponse {
   accessToken: string;

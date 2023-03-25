@@ -1,5 +1,6 @@
 import { Dispatch, memo, SetStateAction } from 'react';
 import { Modal } from 'antd';
+import { useTranslation } from 'next-i18next';
 
 interface SignUpModalProps {
   isOpen: boolean,
@@ -7,8 +8,10 @@ interface SignUpModalProps {
 }
 
 function SignUpModal({ isOpen, setIsOpen }: SignUpModalProps) {
+  const { t: translate } = useTranslation('common');
+
   return (
-    <Modal title='Registration' open={isOpen} onCancel={() => setIsOpen(false)} />
+    <Modal title={translate('register')} okText={translate('register')} cancelText={translate('cancel')} open={isOpen} onCancel={() => setIsOpen(false)} />
   );
 }
 
