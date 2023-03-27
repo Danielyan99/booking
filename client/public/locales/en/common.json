@@ -1,5 +1,9 @@
 {
   "signIn": "Sign In",
   "register": "Register",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "nameRequiredMessage": "Please input your Name",
+  "nameLengthBigger": "Name Length should be bigger than",
+  "nameLengthSmaller": "Name Length should be smaller than",
+  "inputValidName": "Please input a valid name"
 }

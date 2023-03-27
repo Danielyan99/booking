@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { Form, Modal, Input } from 'antd';
 import { useTranslation } from 'next-i18next';
 import { SignInModalProps } from '@src/components/modals/sign-in-modal/types';
+import { emailRules, passwordRules } from '@src/features/sign-up-feature/validation';
 
 function SignInModal({ isOpen, setIsOpen }: SignInModalProps) {
   const { t: translate } = useTranslation('common');
@@ -15,28 +16,14 @@ function SignInModal({ isOpen, setIsOpen }: SignInModalProps) {
       <Form name='signIn' form={form} onFinish={handleSubmit}>
         <Form.Item
           name='email'
-          rules={[
-            {
-              type: 'email',
-              message: 'The input is not valid E-mail!',
-            },
-            {
-              required: true,
-              message: 'Please input your E-mail!',
-            },
-          ]}
+          rules={emailRules}
         >
           <Input placeholder='Email' />
         </Form.Item>
 
         <Form.Item
           name='password'
-          rules={[
-            {
-              required: true,
-              message: 'Please input your password!',
-            },
-          ]}
+          rules={passwordRules}
         >
           <Input.Password placeholder='Password' />
         </Form.Item>

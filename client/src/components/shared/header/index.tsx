@@ -1,6 +1,6 @@
 import Logo from '@src/components/shared/header/logo';
-import SignInFeature from '@src/components/features/sign-in-feature';
-import SignUpFeature from '@src/components/features/sign-up-feature';
+import SignInFeature from '@src/features/sign-in-feature';
+import SignUpFeature from '@src/features/sign-up-feature';
 import LanguagesSelector from '@src/components/shared/header/languages-selector';
 
 function Header() {
