@@ -4,64 +4,70 @@ export function nameRules() {
   return [
     {
       required: true,
-      message: i18n?.t('nameRequiredMessage'),
+      message: i18n?.t('nameRequiredMessageHint'),
     },
     {
       min: 2,
-      message: `${i18n?.t('nameLengthBigger')} 2`,
+      message: `${i18n?.t('nameLengthSmallerHint')} 2`,
     },
     {
       max: 16,
-      message: `${i18n?.t('nameLengthSmaller')} 16`,
+      message: `${i18n?.t('nameLengthBiggerHint')} 16`,
     },
     {
       pattern: /^[A-Z][-a-zA-Z]+$/i,
-      message: i18n?.t('inputValidName'),
+      message: i18n?.t('inputValidNameHint'),
     },
   ];
 }
 
-export const emailRules = [
-  {
-    required: true,
-    message: 'Please input your E-mail',
-  },
-  {
-    pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-    message: 'The input is not valid E-mail',
-  },
-];
-
-export const passwordRules = [
-  {
-    required: true,
-    message: 'Please input your password',
-  },
-  {
-    min: 6,
-    message: 'Password length should be bigger than 6',
-  },
-  {
-    max: 16,
-    message: 'Password length should be smaller than 16',
-  },
-  {
-    whitespace: true,
-    message: 'Please enter a valid password',
-  },
-];
-
-export const confirmPasswordRules = [
-  {
-    required: true,
-    message: 'Please confirm your password',
-  },
-  ({ getFieldValue }: any) => ({
-    validator(_: any, value: string) {
-      if (!value || getFieldValue('password') === value) {
-        return Promise.resolve();
-      }
-      return Promise.reject(new Error('The passwords do not match'));
+export function emailRules() {
+  return [
+    {
+      required: true,
+      message: i18n?.t('inputEmailHint'),
     },
-  }),
-];
+    {
+      pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+      message: i18n?.t('emailInvalidHint'),
+    },
+  ];
+}
+
+export function passwordRules() {
+  return [
+    {
+      required: true,
+      message: i18n?.t('inputPasswordHint'),
+    },
+    {
+      min: 6,
+      message: `${i18n?.t('passwordLengthSmallerHint')} 2`,
+    },
+    {
+      max: 16,
+      message: `${i18n?.t('passwordLengthBiggerHint')} 16`,
+    },
+    {
+      whitespace: true,
+      message: i18n?.t('inputValidPasswordHint'),
+    },
+  ];
+}
+
+export function confirmPasswordRules() {
+  return [
+    {
+      required: true,
+      message: i18n?.t('confirmPasswordHint'),
+    },
+    ({ getFieldValue }: any) => ({
+      validator(_: any, value: string) {
+        if (!value || getFieldValue('password') === value) {
+          return Promise.resolve();
+        }
+        return Promise.reject(new Error(i18n?.t('passwordNotMatchHint')));
+      },
+    }),
+  ];
+}
