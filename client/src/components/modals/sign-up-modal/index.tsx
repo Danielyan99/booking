@@ -10,6 +10,7 @@ function SignUpModal({ isOpen, setIsOpen }: SignUpModalProps) {
 
   const handleSubmit = (data: any) => {
     console.log(data);
+    setIsOpen(false);
   };
 
   return (
