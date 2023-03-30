@@ -3,18 +3,17 @@ import { Form, Input, Modal } from 'antd';
 import { useTranslation } from 'next-i18next';
 import { SignUpModalProps } from '@src/components/modals/sign-up-modal/types';
 import { nameRules, emailRules, passwordRules, confirmPasswordRules } from '@src/features/sign-up-feature/validation';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@src/core/store';
+import { useAppDispatch } from '@src/core/store';
 import { signupUser } from '@src/core/store/features/auth/authSliceService';
 
 function SignUpModal({ isOpen, setIsOpen }: SignUpModalProps) {
   const { t } = useTranslation('common');
   const [form] = Form.useForm();
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = async (data: any) => {
     console.log(data);
-    // dispatch(signupUser(data));
+    dispatch(signupUser(data));
     setIsOpen(false);
   };
 
