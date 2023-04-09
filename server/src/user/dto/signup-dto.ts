@@ -3,7 +3,7 @@ import { RolesEnum } from '../../roles/roles.enum';
 
 export class SignupDto {
   @IsString()
-  @MinLength(6)
+  @MinLength(2)
   @MaxLength(12)
   readonly name: string;
 

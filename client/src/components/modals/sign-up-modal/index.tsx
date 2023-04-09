@@ -1,20 +1,22 @@
 import { memo } from 'react';
 import { Form, Input, Modal } from 'antd';
 import { useTranslation } from 'next-i18next';
-import { SignUpModalProps } from '@src/components/modals/sign-up-modal/types';
+import { ISinUpData, SignUpModalProps } from '@src/components/modals/sign-up-modal/types';
 import { nameRules, emailRules, passwordRules, confirmPasswordRules } from '@src/features/sign-up-feature/validation';
-import { useAppDispatch } from '@src/core/store';
-import { signupUser } from '@src/core/store/features/auth/authSliceService';
+import { useSelector } from 'react-redux';
+import AuthController from '@src/core/controllers/AuthController';
+import { IRootState } from '@src/core/store';
 
 function SignUpModal({ isOpen, setIsOpen }: SignUpModalProps) {
   const { t } = useTranslation('common');
   const [form] = Form.useForm();
-  const dispatch = useAppDispatch();
+  const { error } = useSelector((state: IRootState) => state.user);
 
-  const handleSubmit = async (data: any) => {
-    console.log(data);
-    dispatch(signupUser(data));
-    setIsOpen(false);
+  const handleSubmit = async (data: ISinUpData) => {
+    const res = await AuthController.signup(data);
+    if (!res.error) {
+      setIsOpen(false);
+    }
   };
 
   return (
@@ -50,6 +52,7 @@ function SignUpModal({ isOpen, setIsOpen }: SignUpModalProps) {
         >
           <Input.Password placeholder={t('confirmPassword') || ''} />
         </Form.Item>
+        <div className='error-message'>{error}</div>
       </Form>
     </Modal>
   );
