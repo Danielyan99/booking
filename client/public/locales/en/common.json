@@ -7,15 +7,16 @@
   "password": "Password",
   "confirmPassword": "Confirm Password",
   "nameRequiredMessageHint": "Please input your Name",
-  "nameLengthBiggerHint": "Name Length should be bigger than",
-  "nameLengthSmallerHint": "Name Length should be smaller than",
+  "nameLengthBiggerHint": "Name Length should not be bigger than",
+  "nameLengthSmallerHint": "Name Length should not be smaller than",
   "inputValidNameHint": "Please input a valid name",
   "inputEmailHint": "Please input your E-mail",
   "emailInvalidHint": "The input is not valid E-mail",
   "inputPasswordHint": "Please input your password",
-  "passwordLengthBiggerHint": "Password length should be bigger than",
-  "passwordLengthSmallerHint": "Password length should be smaller than",
+  "passwordLengthBiggerHint": "Password length should not be bigger than",
+  "passwordLengthSmallerHint": "Password length should not be smaller than",
   "inputValidPasswordHint": "Please enter a valid password",
   "confirmPasswordHint": "Please confirm your password",
-  "passwordNotMatchHint": "The passwords do not match"
+  "passwordNotMatchHint": "The passwords do not match",
+  "emailIsAlreadyRegisteredHint": "Email is already registered"
 }

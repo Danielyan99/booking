@@ -5,9 +5,14 @@ export interface SignUpModalProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>
 }
 
-export interface ISinUpData {
+export interface ISignUpData {
   name: string;
   email: string;
   password: string;
   confirmPassword: string;
+}
+
+export interface ISignInData {
+  email: string;
+  password: string;
 }

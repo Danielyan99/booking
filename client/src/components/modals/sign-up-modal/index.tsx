@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Form, Input, Modal } from 'antd';
 import { useTranslation } from 'next-i18next';
-import { ISinUpData, SignUpModalProps } from '@src/components/modals/sign-up-modal/types';
+import { SignUpModalProps, ISignUpData } from '@src/components/modals/sign-up-modal/types';
 import { nameRules, emailRules, passwordRules, confirmPasswordRules } from '@src/features/sign-up-feature/validation';
 import { useSelector } from 'react-redux';
 import AuthController from '@src/core/controllers/AuthController';
@@ -12,7 +12,7 @@ function SignUpModal({ isOpen, setIsOpen }: SignUpModalProps) {
   const [form] = Form.useForm();
   const { error } = useSelector((state: IRootState) => state.user);
 
-  const handleSubmit = async (data: ISinUpData) => {
+  const handleSubmit = async (data: ISignUpData) => {
     const res = await AuthController.signup(data);
     if (!res.error) {
       setIsOpen(false);
@@ -52,7 +52,7 @@ function SignUpModal({ isOpen, setIsOpen }: SignUpModalProps) {
         >
           <Input.Password placeholder={t('confirmPassword') || ''} />
         </Form.Item>
-        <div className='error-message'>{error}</div>
+        <div className='error-message'>{t(error)}</div>
       </Form>
     </Modal>
   );

@@ -6,7 +6,7 @@
   "email": "Էլ․ Փոստ",
   "password": "Ծածկագիր",
   "confirmPassword": "Հաստատել Ծածկագիրը",
-  "nameRequiredMessageHint": "Խնդրում եm մուտքագրեք Ձեր անունը",
+  "nameRequiredMessageHint": "Խնդրում ենք մուտքագրել Ձեր անունը",
   "nameLengthBiggerHint": "Անվան երկարությունը պետք է լինի ոչ ավել քան",
   "nameLengthSmallerHint": "Անվան երկարությունը պետք է լինի ոչ պակաս քան",
   "inputValidNameHint": "Խնդրում ենք մուտքագրել վավեր անուն",
@@ -17,5 +17,6 @@
   "passwordLengthSmallerHint": "Ծածկագրի երկարությունը պետք է լինի ոչ պակաս քան",
   "inputValidPasswordHint": "Խնդրում ենք մուտքագրել վավեր ծածկագիր",
   "confirmPasswordHint": "Խնդրում ենք հաստատել ծածկագիրը",
-  "passwordNotMatchHint": "Ծածկագրերը չեն համընկնում"
+  "passwordNotMatchHint": "Ծածկագրերը չեն համընկնում",
+  "emailIsAlreadyRegisteredHint": "Էլ. փոստն արդեն գրանցված է"
 }

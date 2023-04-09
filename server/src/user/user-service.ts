@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { SignupDto } from './dto/signup-dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from './user-model';
@@ -18,12 +18,12 @@ export class UserService {
     private tokenService: TokenService,
   ) {}
 
-  async signup(userDto: SignupDto) {
-    const { name, email, password, role } = userDto;
+  async signup(userData: SignupDto) {
+    const { name, email, password, role } = userData;
     const user = await this.userModel.findOne({ email });
 
     if (user) {
-      throw new UnauthorizedException('Email is already registered');
+      throw new BadRequestException('emailIsAlreadyRegisteredHint');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -35,30 +35,32 @@ export class UserService {
       role,
     });
 
+    const userDto = new UserDto(createdUser);
     const tokens = this.tokenService.generateTokens({ ...userDto });
-    await this.tokenService.saveToken(createdUser._id, tokens.refreshToken);
+    await this.tokenService.saveToken(userDto.id, tokens.refreshToken);
 
     return { ...tokens, user: userDto };
   }
 
-  async signin(userDto: SigninDto) {
-    const { email, password } = userDto;
+  async signin(userData: SigninDto) {
+    const { email, password } = userData;
     const user = await this.userModel.findOne({ email });
 
     if (!user) {
-      throw new UnauthorizedException('Invalid email or password');
+      throw new BadRequestException('Invalid email or password');
     }
 
     const isPasswordMatched = await bcrypt.compare(password, user.password);
 
     if (!isPasswordMatched) {
-      throw new UnauthorizedException('Invalid email or password');
+      throw new BadRequestException('Invalid email or password');
     }
 
-    const tokens = this.tokenService.generateTokens({ name: user.name, email, password, role: user.role });
-    await this.tokenService.saveToken(user._id, tokens.refreshToken);
+    const userDto = new UserDto(user);
+    const tokens = this.tokenService.generateTokens({ ...userDto });
+    await this.tokenService.saveToken(userDto.id, tokens.refreshToken);
 
-    return { ...tokens, user };
+    return { ...tokens, user: userDto };
   }
 
   async logout(refreshToken) {
@@ -75,11 +77,12 @@ export class UserService {
     if (!userData || !tokenFromDB) {
       throw new UnauthorizedException();
     }
-    const user: UserDto = await this.userModel.findById(userData.id);
-    const tokens = this.tokenService.generateTokens(user);
+    const user = await this.userModel.findById(userData.id);
+    const userDto = new UserDto(user);
+    const tokens = this.tokenService.generateTokens({ ...userDto });
 
-    await this.tokenService.saveToken(user.id, tokens.refreshToken);
-    return { ...tokens, user };
+    await this.tokenService.saveToken(userDto.id, tokens.refreshToken);
+    return { ...tokens, user: userDto };
   }
 
   async findAll(): Promise<User[]> {

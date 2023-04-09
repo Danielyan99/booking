@@ -36,7 +36,7 @@ export class UserController {
     return token;
   }
 
-  @Post('/refresh')
+  @Get('/refresh')
   async refresh(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
     const { refreshToken } = req.cookies;
     const userData = await this.userService.refresh(refreshToken);

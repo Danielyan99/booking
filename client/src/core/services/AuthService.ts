@@ -1,5 +1,5 @@
 import $api from '@src/shared/api';
-import { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { AuthResponse } from '@src/core/modules/AuthResponse';
 
 export default class AuthService {
@@ -9,6 +9,11 @@ export default class AuthService {
 
   static async signup(name: string, email: string, password: string): Promise<AxiosResponse<AuthResponse>> {
     return $api.post<AuthResponse>('/auth/signup', { email, password, name, role: 'user' });
+  }
+
+  static async checkAuth() {
+    console.log(process.env.API_URL);
+    return axios.get<AuthResponse>(`${process.env.API_URL}/auth/refresh`, { withCredentials: true });
   }
 
   static async logout(): Promise<void> {
