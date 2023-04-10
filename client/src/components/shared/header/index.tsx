@@ -9,7 +9,7 @@ import UserBadge from '@src/components/shared/header/user-badge';
 
 function Header() {
   const { user } = useSelector((state: IRootState) => state.user);
-  console.log(user, 'go headers file and add checks for authenticated user-badge');
+
   return (
     <div className='header'>
       <div className='container'>

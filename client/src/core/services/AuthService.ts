@@ -12,7 +12,6 @@ export default class AuthService {
   }
 
   static async checkAuth() {
-    console.log(process.env.API_URL);
     return axios.get<AuthResponse>(`${process.env.API_URL}/auth/refresh`, { withCredentials: true });
   }
 
