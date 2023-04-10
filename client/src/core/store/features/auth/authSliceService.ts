@@ -37,3 +37,15 @@ export const checkAuthUser = createAsyncThunk('user/checkAuth', async (_, { reje
     }
   }
 });
+
+export const logoutUser = createAsyncThunk('user/logout', async (_, { rejectWithValue }) => {
+  try {
+    const res = await AuthService.logout();
+    localStorage.removeItem('token');
+    return res;
+  } catch (err) {
+    if (err instanceof AxiosError) {
+      return rejectWithValue(err?.response?.data.message);
+    }
+  }
+});

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { IUser } from '@src/core/modules/IUser';
-import {checkAuthUser, signinUser, signupUser} from '@src/core/store/features/auth/authSliceService';
+import {checkAuthUser, logoutUser, signinUser, signupUser} from '@src/core/store/features/auth/authSliceService';
 
 interface AuthState {
   isAuthenticated: boolean;
@@ -63,6 +63,22 @@ const authSlice = createSlice({
     });
     builder.addCase(checkAuthUser.rejected, (state) => {
       state.error = '';
+      state.isAuthenticated = false;
+      state.user = null;
+      state.isLoading = false;
+    });
+
+    builder.addCase(logoutUser.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(logoutUser.fulfilled, (state) => {
+      state.error = '';
+      state.isAuthenticated = false;
+      state.user = null;
+      state.isLoading = false;
+    });
+    builder.addCase(logoutUser.rejected, (state, action: any) => {
+      state.error = action.payload;
       state.isAuthenticated = false;
       state.user = null;
       state.isLoading = false;
