@@ -43,6 +43,8 @@
     "import/no-extraneous-dependencies": "off",
     "@typescript-eslint/no-var-requires": "off",
     "linebreak-style": 0,
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "import/no-mutable-exports": "off",
+    "no-shadow": "off"
   }
 }

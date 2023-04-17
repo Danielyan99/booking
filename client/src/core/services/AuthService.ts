@@ -8,7 +8,7 @@ export default class AuthService {
   }
 
   static async signup(name: string, email: string, password: string): Promise<AxiosResponse<AuthResponse>> {
-    return $api.post<AuthResponse>('/auth/signup', { email, password, name, role: 'user' });
+    return $api.post<AuthResponse>('/auth/signup', { email, password, name, role: 'admin' });
   }
 
   static async checkAuth() {

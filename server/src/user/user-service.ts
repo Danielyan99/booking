@@ -39,7 +39,7 @@ export class UserService {
     const tokens = this.tokenService.generateTokens({ ...userDto });
     await this.tokenService.saveToken(userDto.id, tokens.refreshToken);
 
-    return { ...tokens, user: userDto };
+    return { ...tokens, ...userDto };
   }
 
   async signin(userData: SigninDto) {
@@ -60,7 +60,7 @@ export class UserService {
     const tokens = this.tokenService.generateTokens({ ...userDto });
     await this.tokenService.saveToken(userDto.id, tokens.refreshToken);
 
-    return { ...tokens, user: userDto };
+    return { ...tokens, ...userDto };
   }
 
   async logout(refreshToken) {
@@ -82,7 +82,7 @@ export class UserService {
     const tokens = this.tokenService.generateTokens({ ...userDto });
 
     await this.tokenService.saveToken(userDto.id, tokens.refreshToken);
-    return { ...tokens, user: userDto };
+    return { ...tokens, ...userDto };
   }
 
   async findAll(): Promise<User[]> {
