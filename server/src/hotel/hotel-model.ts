@@ -6,13 +6,13 @@ export class Hotel {
   name: string;
 
   @Prop({ required: true })
+  region: string;
+
+  @Prop({ required: true })
   star: number;
 
   @Prop({ required: true, default: 0 })
   score: number;
-
-  @Prop({ required: true })
-  region: string;
 
   @Prop({ required: true })
   freeCancellation: boolean;

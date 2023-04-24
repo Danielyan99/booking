@@ -9,15 +9,13 @@ const UserOverlayMenu: MenuProps['items'] = [
     label: 'profile',
     key: 'profile',
     icon: <SolutionOutlined />,
-    onClick: () => console.log('profile'),
+    onClick: () => Router.push('/dashboard', { query: 'profile' }),
   },
   {
     label: 'dashboard',
     key: 'dashboard',
     icon: <DashboardOutlined />,
-    onClick: () => {
-      Router.push('/dashboard');
-    },
+    onClick: () => Router.push('/dashboard'),
   },
   {
     label: 'logout',

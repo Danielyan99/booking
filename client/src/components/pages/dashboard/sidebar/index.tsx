@@ -1,71 +1,33 @@
-import React, { useState } from 'react';
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import React, { useMemo, useState } from 'react';
+import { Breadcrumb, Layout, Menu } from 'antd';
+import sidebarMenuItems from '@src/components/pages/dashboard/sidebar/SideBarConstants';
+import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
+const getDynamicComponent = (query: string) => dynamic(() => import(`../${query}`));
 
-type MenuItem = Required<MenuProps>['items'][number];
-
-function getItem(
-  label: React.ReactNode,
-  key: React.Key,
-  icon?: React.ReactNode,
-  children?: MenuItem[],
-): MenuItem {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  } as MenuItem;
-}
-
-const items: MenuItem[] = [
-  getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
-  ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-  getItem('Files', '9', <FileOutlined />),
-];
-
-const App: React.FC = () => {
+function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  const router = useRouter();
+  const breadcrumbItems = useMemo(() => [{ title: 'dashboard' }, { title: router.query.tab }], [router.query.tab]);
+  const DynamicContentComponent = useMemo(() => getDynamicComponent(router.query.tab as string), [router.query.tab]);
 
   return (
-    <Layout style={{ minHeight: 'calc(100vh - 72px)' }}>
+    <Layout style={{ minHeight: 'calc(100vh - 58px)' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div style={{ height: 32, margin: 16, background: 'rgba(255, 255, 255, 0.2)' }} />
-        <Menu theme='dark' defaultSelectedKeys={['1']} mode='inline' items={items} />
+        <div style={{ height: 32, margin: 16 }} />
+        <Menu theme='dark' selectedKeys={[router.query?.tab as string]} mode='inline' items={sidebarMenuItems} />
       </Sider>
       <Layout className='site-layout'>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
+        <Header style={{ padding: 0 }} />
         <Content style={{ margin: '0 16px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
-          <div style={{ padding: 24, minHeight: 360, background: colorBgContainer }}>
-            Bill is a cat.
-          </div>
+          <Breadcrumb items={breadcrumbItems} style={{ margin: '16px 0' }} />
+          <DynamicContentComponent />
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2023 Created by Ant UED</Footer>
       </Layout>
     </Layout>
   );
-};
+}
 
-export default App;
+export default Sidebar;
