@@ -14,6 +14,9 @@ function AddHotel() {
       <Form.Item name='name'>
         <Input placeholder='Name' />
       </Form.Item>
+      <Form.Item name='name'>
+        <Input placeholder='Name' />
+      </Form.Item>
       <Form.Item name='rate' label='Rate'>
         <Rate />
       </Form.Item>

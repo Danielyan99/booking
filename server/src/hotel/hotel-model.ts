@@ -1,4 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import mongoose from 'mongoose';
+import { Room } from '../room/room-model';
 
 @Schema({ timestamps: true })
 export class Hotel {
@@ -7,6 +9,9 @@ export class Hotel {
 
   @Prop({ required: true })
   region: string;
+
+  @Prop({ required: true })
+  price: number;
 
   @Prop({ required: true })
   star: number;
@@ -64,6 +69,9 @@ export class Hotel {
 
   @Prop()
   selfCatering: boolean;
+
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'rooms' })
+  owner: Room;
 }
 
 export const HotelSchema = SchemaFactory.createForClass(Hotel);
