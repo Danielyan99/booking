@@ -10,6 +10,14 @@ export class HotelService {
     private hotelModel: mongoose.Model<Hotel>,
   ) {}
 
+  async createHotel(hotelDto) {
+    const createdHotel = await this.hotelModel.create({
+      ...hotelDto,
+    });
+
+    return { ...createdHotel };
+  }
+
   async getAll() {
     return [{ name: 'hotel1' }];
   }

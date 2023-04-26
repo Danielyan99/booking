@@ -11,9 +11,6 @@ export class Hotel {
   region: string;
 
   @Prop({ required: true })
-  price: number;
-
-  @Prop({ required: true })
   star: number;
 
   @Prop({ required: true, default: 0 })
@@ -70,8 +67,8 @@ export class Hotel {
   @Prop()
   selfCatering: boolean;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'rooms' })
-  owner: Room;
+  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Room' })
+  rooms: Room[];
 }
 
 export const HotelSchema = SchemaFactory.createForClass(Hotel);

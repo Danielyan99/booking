@@ -3,6 +3,7 @@ import { UserModule } from './user/user-module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { HotelModule } from './hotel/hotel-module';
+import { RoomModule } from './room/room-module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { HotelModule } from './hotel/hotel-module';
     MongooseModule.forRoot(process.env.DB_URI),
     UserModule,
     HotelModule,
+    RoomModule,
   ],
 })
 export class AppModule {}
