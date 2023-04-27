@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose from 'mongoose';
+import { Types } from 'mongoose';
 import { Room } from '../room/room-model';
 
 @Schema({ timestamps: true })
@@ -67,7 +67,7 @@ export class Hotel {
   @Prop()
   selfCatering: boolean;
 
-  @Prop()
+  @Prop({ type: [{ type: Types.ObjectId, ref: Room.name }] })
   rooms: Room[];
 }
 

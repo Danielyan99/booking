@@ -15,9 +15,7 @@ export class RoomService {
   }
 
   async getRoomsByHotel(hotelId) {
-    const hotel = await this.hotelModel.findById(hotelId);
-    const rooms = hotel.populate('rooms');
-    console.log(rooms);
-    return hotel;
+    const hotel = await this.hotelModel.findById(hotelId).populate('rooms');
+    return hotel.rooms;
   }
 }

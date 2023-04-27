@@ -9,9 +9,6 @@ export class Room {
 
   @Prop({ required: true })
   price: number;
-
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Hotel' })
-  hotel: Hotel;
 }
 
 export const RoomSchema = SchemaFactory.createForClass(Room);

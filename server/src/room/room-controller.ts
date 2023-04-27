@@ -11,8 +11,7 @@ export class RoomController {
   }
 
   @Get('/getHotelRooms')
-  async getRoomsFromHotel(@Query() { hotelId }) {
-    const rooms = await this.roomService.getRoomsByHotel(hotelId);
-    return rooms;
+  getRoomsFromHotel(@Query() { hotelId }) {
+    return this.roomService.getRoomsByHotel(hotelId);
   }
 }
