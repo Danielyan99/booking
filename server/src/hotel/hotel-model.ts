@@ -67,7 +67,7 @@ export class Hotel {
   @Prop()
   selfCatering: boolean;
 
-  @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'Room' })
+  @Prop()
   rooms: Room[];
 }
 
