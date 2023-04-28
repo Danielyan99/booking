@@ -4,10 +4,10 @@ import { SignupDto } from './dto/signup-dto';
 import { User } from './user-model';
 import { SigninDto } from './dto/signin.dto';
 import { Response, Request } from 'express';
-import { JwtAuthGuard } from '../guards/jwt-auth-guard';
-import { RolesGuard } from '../guards/roles.guard';
-import { Roles } from '../roles/roles.decorator';
-import { RolesEnum } from '../roles/roles.enum';
+import { JwtAuthGuard } from '../../guards/jwt-auth-guard';
+import { RolesGuard } from '../../guards/roles.guard';
+import { Roles } from './roles/roles.decorator';
+import { RolesEnum } from './roles/roles.enum';
 
 @Controller('auth')
 export class UserController {

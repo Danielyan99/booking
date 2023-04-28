@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { UserModule } from './user/user-module';
+import { UserModule } from './modules/user/user-module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { HotelModule } from './hotel/hotel-module';
-import { RoomModule } from './room/room-module';
+import { HotelModule } from './modules/hotel/hotel-module';
+import { RoomModule } from './modules/room/room-module';
 
 @Module({
   imports: [

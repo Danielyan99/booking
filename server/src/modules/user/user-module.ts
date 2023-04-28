@@ -8,7 +8,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { TokenService } from '../token/token-service';
 import { TokenSchema } from '../token/token-model';
-import { JwtStrategy } from '../strategies/jwt-strategy';
+import { JwtStrategy } from '../../strategies/jwt-strategy';
 
 @Module({
   imports: [

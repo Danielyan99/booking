@@ -10,11 +10,33 @@ export class RoomService {
 
   async createRoom(roomDto) {
     const createdRoom = await this.roomModel.create({ ...roomDto });
-    const updatedHotel = await this.hotelModel.findByIdAndUpdate(roomDto.hotelId, { $addToSet: { rooms: createdRoom._id } });
-    return updatedHotel;
+    await this.hotelModel.findByIdAndUpdate(roomDto.hotelId, { $addToSet: { rooms: createdRoom._id } });
+    return createdRoom;
   }
 
-  async getRoomsByHotel(hotelId) {
+  updateRoom(roomId, roomData) {
+    return this.roomModel.findByIdAndUpdate(
+      roomId,
+      {
+        $set: roomData,
+      },
+      { new: true },
+    );
+  }
+
+  deleteRoom(roomId) {
+    return this.roomModel.findByIdAndDelete(roomId);
+  }
+
+  getRoom(roomId) {
+    return this.roomModel.findById(roomId);
+  }
+
+  getAll() {
+    return this.roomModel.find();
+  }
+
+  async getRoomsFromHotel(hotelId) {
     const hotel = await this.hotelModel.findById(hotelId).populate('rooms');
     return hotel.rooms;
   }
