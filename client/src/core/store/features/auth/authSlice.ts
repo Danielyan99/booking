@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IUser } from '@src/core/modules/IUser';
-import {checkAuthUser, logoutUser, signinUser, signupUser} from '@src/core/store/features/auth/authSliceService';
+import { IUser } from '@src/core/modules/user/IUser';
+import { checkAuthUser, logoutUser, signinUser, signupUser } from '@src/core/store/features/auth/authSliceService';
 
 interface AuthState {
   isAuthenticated: boolean;

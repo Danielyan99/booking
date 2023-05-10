@@ -1,6 +1,6 @@
 import $api from '@src/shared/api';
 import axios, { AxiosResponse } from 'axios';
-import { AuthResponse } from '@src/core/modules/AuthResponse';
+import { AuthResponse } from '@src/core/modules/user/AuthResponse';
 
 export default class AuthService {
   static async signin(email: string, password: string): Promise<AxiosResponse<AuthResponse>> {

@@ -13,59 +13,20 @@ export class Hotel {
   @Prop({ required: true })
   star: number;
 
-  @Prop({ required: true, default: 0 })
-  score: number;
-
-  @Prop({ required: true })
-  freeCancellation: boolean;
-
-  @Prop({ required: true })
-  bookWithoutCreditCard: boolean;
-
-  @Prop({ required: true })
-  noPayment: boolean;
+  @Prop()
+  cancellationPolicy: Array<string>;
 
   @Prop()
-  swimmingPool: boolean;
+  facilities: Array<string>;
 
   @Prop()
-  spaCenter: boolean;
+  meals: Array<string>;
 
   @Prop()
-  petsAllowed: boolean;
+  funThings: Array<string>;
 
   @Prop()
-  freeWiFi: boolean;
-
-  @Prop()
-  fitnessCenter: boolean;
-
-  @Prop()
-  parking: boolean;
-
-  @Prop()
-  restaurant: boolean;
-
-  @Prop()
-  beach: boolean;
-
-  @Prop()
-  massage: boolean;
-
-  @Prop()
-  billiards: boolean;
-
-  @Prop()
-  diving: boolean;
-
-  @Prop()
-  allInclusive: boolean;
-
-  @Prop()
-  breakfast: boolean;
-
-  @Prop()
-  selfCatering: boolean;
+  images: Array<any>;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: Room.name }] })
   rooms: Room[];

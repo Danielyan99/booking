@@ -1,5 +1,5 @@
 import { ISignInData, ISignUpData } from '@src/components/modals/sign-up-modal/types';
-import {checkAuthUser, logoutUser, signinUser, signupUser} from '@src/core/store/features/auth/authSliceService';
+import { checkAuthUser, logoutUser, signinUser, signupUser } from '@src/core/store/features/auth/authSliceService';
 import { store } from '@src/core/store';
 
 export default class AuthController {

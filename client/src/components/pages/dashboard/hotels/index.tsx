@@ -18,7 +18,7 @@ const items: TabsProps['items'] = [
 
 function DashboardHotels() {
   return (
-    <Tabs defaultActiveKey='1' items={items} />
+    <Tabs defaultActiveKey='1' items={items} destroyInactiveTabPane />
   );
 }
 

@@ -1,23 +1,32 @@
 import React, { memo } from 'react';
-import { Button, Checkbox, Form, Input, Rate } from 'antd';
+import { Button, Checkbox, Form, Input, message, Rate, Upload } from 'antd';
+import HotelController from '@src/core/controllers/HotelController';
+import { PlusOutlined } from '@ant-design/icons';
+import { nameRules } from '@src/features/sign-up-feature/validation';
 
 function AddHotel() {
-  const handleSubmit = (data: any) => {
+  const [form] = Form.useForm();
+
+  const normFile = (e: any) => (Array.isArray(e) ? e : e?.fileList);
+
+  const handleSubmit = async (data: any) => {
     console.log(data);
+    const response = await HotelController.createHotel(data);
+    if (response.data) {
+      message.success('Hotel was successfully created');
+      form.resetFields();
+    }
   };
 
   return (
-    <Form name='add-hotel' onFinish={handleSubmit}>
-      <Form.Item name='region'>
+    <Form name='add-hotel' onFinish={handleSubmit} form={form}>
+      <Form.Item name='region' rules={nameRules()}>
         <Input placeholder='Region' />
       </Form.Item>
-      <Form.Item name='name'>
+      <Form.Item name='name' rules={nameRules()}>
         <Input placeholder='Name' />
       </Form.Item>
-      <Form.Item name='name'>
-        <Input placeholder='Name' />
-      </Form.Item>
-      <Form.Item name='rate' label='Rate'>
+      <Form.Item name='star' label='Star' rules={[{ required: true }]}>
         <Rate />
       </Form.Item>
       <Form.Item name='cancellationPolicy' label='Cancellation Policy'>
@@ -38,7 +47,7 @@ function AddHotel() {
           <Checkbox value='restaurant'>Restaurant</Checkbox>
         </Checkbox.Group>
       </Form.Item>
-      <Form.Item name='facilities' label='Fun things to do'>
+      <Form.Item name='funThings' label='Fun things to do'>
         <Checkbox.Group>
           <Checkbox value='beach'>Beach</Checkbox>
           <Checkbox value='massage'>Massage</Checkbox>
@@ -53,10 +62,17 @@ function AddHotel() {
           <Checkbox value='selfCatering'>Self Catering</Checkbox>
         </Checkbox.Group>
       </Form.Item>
+      <Form.Item name='images' label='Upload' valuePropName='fileList' getValueFromEvent={normFile}>
+        <Upload listType='picture-card' multiple accept='.png,.jpeg,.jpg,.webp' beforeUpload={() => false}>
+          <div>
+            <PlusOutlined />
+            Upload
+          </div>
+        </Upload>
+      </Form.Item>
       <Button type='primary' htmlType='submit'>
-        Submit
+        Create Hotel
       </Button>
-      <div className='error-message'>error</div>
     </Form>
   );
 }
