@@ -11,4 +11,8 @@ export default class HotelService {
   static async getAll(): Promise<AxiosResponse<AuthResponse>> {
     return $api.get<AuthResponse>('/hotel/all');
   }
+
+  static async deleteHotel(id: string): Promise<AxiosResponse<AuthResponse>> {
+    return $api.delete<AuthResponse>(`/hotel/${id}`);
+  }
 }

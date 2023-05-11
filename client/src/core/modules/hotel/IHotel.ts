@@ -6,6 +6,7 @@ export interface IHotel {
   facilities: Array<string>;
   meals: Array<string>;
   funThings: Array<string>;
-  images: Array<{ thumbUrl: string }>;
+  _id: string;
+  images: Array<{ thumbUrl: string; name: string; size: number; type: string; }>;
   rooms: Array<any>;
 }

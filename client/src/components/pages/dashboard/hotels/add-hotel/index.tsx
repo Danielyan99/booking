@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Button, Checkbox, Form, Input, message, Rate, Upload } from 'antd';
 import HotelController from '@src/core/controllers/HotelController';
 import { PlusOutlined } from '@ant-design/icons';
-import { nameRules } from '@src/features/sign-up-feature/validation';
+import { nameRules, regionRules } from '@src/components/pages/dashboard/hotels/add-hotel/validation';
 
 function AddHotel() {
   const [form] = Form.useForm();
@@ -10,7 +10,6 @@ function AddHotel() {
   const normFile = (e: any) => (Array.isArray(e) ? e : e?.fileList);
 
   const handleSubmit = async (data: any) => {
-    console.log(data);
     const response = await HotelController.createHotel(data);
     if (response.data) {
       message.success('Hotel was successfully created');
@@ -23,7 +22,7 @@ function AddHotel() {
       <Form.Item name='region' rules={nameRules()}>
         <Input placeholder='Region' />
       </Form.Item>
-      <Form.Item name='name' rules={nameRules()}>
+      <Form.Item name='name' rules={regionRules()}>
         <Input placeholder='Name' />
       </Form.Item>
       <Form.Item name='star' label='Star' rules={[{ required: true }]}>

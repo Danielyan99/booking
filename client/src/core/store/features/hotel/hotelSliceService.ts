@@ -12,3 +12,14 @@ export const getHotels = createAsyncThunk('hotel/all', async (_, { rejectWithVal
     }
   }
 });
+
+export const deleteHotel = createAsyncThunk('hotel/delete/:id', async (id: string, { rejectWithValue }) => {
+  try {
+    const res = await HotelService.deleteHotel(id);
+    return res;
+  } catch (err) {
+    if (err instanceof AxiosError) {
+      return rejectWithValue(err?.response?.data.message);
+    }
+  }
+});

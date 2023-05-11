@@ -1,6 +1,6 @@
 import { IHotel } from '@src/core/modules/hotel/IHotel';
 import { createSlice } from '@reduxjs/toolkit';
-import { getHotels } from '@src/core/store/features/hotel/hotelSliceService';
+import { deleteHotel, getHotels } from '@src/core/store/features/hotel/hotelSliceService';
 
 interface HotelState {
   hotels: Array<IHotel>,
@@ -30,6 +30,10 @@ const hotelSlice = createSlice({
     builder.addCase(getHotels.rejected, (state, action: any) => {
       state.error = action.payload;
       state.isLoading = false;
+    });
+
+    builder.addCase(deleteHotel.fulfilled, (state, action: any) => {
+      state.hotels = state.hotels.filter((hotel) => hotel._id !== action.payload.data._id);
     });
   },
 });
