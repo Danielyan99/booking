@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState } from 'react';
 import HotelController from '@src/core/controllers/HotelController';
 import { useSelector } from 'react-redux';
 import { IRootState } from '@src/core/store';
-import { Row, Spin, Typography } from 'antd';
+import { Col, Row, Spin, Typography } from 'antd';
 import { IHotelDB } from '@src/components/pages/dashboard/hotels/hotels-list/types';
 import Hotel from '@src/components/pages/dashboard/hotels/hotel';
 import EditHotelModal from '@src/components/pages/dashboard/hotels/edit-hotel-modal';
@@ -21,7 +21,7 @@ function HotelsList() {
   if (isLoading) {
     return <Spin size='large' />;
   }
-  console.log(hotels);
+
   return (
     <div>
       {hotels.length
@@ -29,7 +29,7 @@ function HotelsList() {
           <div className='hotels'>
             <Row gutter={3}>
               {hotels.map((hotel: IHotelDB) => (
-                <div className='hotel-item' role='presentation' key={hotel._id} onClick={() => setCurrentOpenedHotelData({ ...hotel })}>
+                <Col span={6} key={hotel._id} onClick={() => setCurrentOpenedHotelData({ ...hotel })}>
                   <Hotel
                     id={hotel._id}
                     name={hotel.name}
@@ -38,7 +38,7 @@ function HotelsList() {
                     imgUrl={hotel.images[0]?.thumbUrl}
                     setIsModalOpen={setIsModalOpen}
                   />
-                </div>
+                </Col>
               ))}
             </Row>
           </div>

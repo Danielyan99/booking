@@ -3,13 +3,14 @@ import { Button, Checkbox, Form, Input, message, Rate, Upload } from 'antd';
 import HotelController from '@src/core/controllers/HotelController';
 import { PlusOutlined } from '@ant-design/icons';
 import { nameRules, regionRules } from '@src/components/pages/dashboard/hotels/add-hotel/validation';
+import { IHotel } from '@src/core/modules/hotel/IHotel';
 
 function AddHotel() {
   const [form] = Form.useForm();
 
   const normFile = (e: any) => (Array.isArray(e) ? e : e?.fileList);
 
-  const handleSubmit = async (data: any) => {
+  const handleSubmit = async (data: IHotel) => {
     const response = await HotelController.createHotel(data);
     if (response.data) {
       message.success('Hotel was successfully created');

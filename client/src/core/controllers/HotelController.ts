@@ -1,6 +1,6 @@
 import HotelService from '@src/core/services/HotelService';
 import { IHotel } from '@src/core/modules/hotel/IHotel';
-import { getHotels, deleteHotel } from '@src/core/store/features/hotel/hotelSliceService';
+import { getHotels, updateHotel, deleteHotel } from '@src/core/store/features/hotel/hotelSliceService';
 import { store } from '@src/core/store';
 
 export default class HotelController {
@@ -24,6 +24,10 @@ export default class HotelController {
 
   static getAll() {
     return store.dispatch(getHotels());
+  }
+
+  static updateHotel(id: string, data: IHotel) {
+    return store.dispatch(updateHotel({id, hotelData: data}));
   }
 
   static deleteHotel(id: string) {

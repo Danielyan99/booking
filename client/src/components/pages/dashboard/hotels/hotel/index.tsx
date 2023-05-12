@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Card, Col, message, Rate } from 'antd';
+import { Card, message, Rate } from 'antd';
 import { IHotelProps } from '@src/components/pages/dashboard/hotels/hotel/types';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import HotelController from '@src/core/controllers/HotelController';
@@ -15,19 +15,17 @@ function Hotel({ name, id, star, imgUrl, region, setIsModalOpen }: IHotelProps) 
   };
 
   return (
-    <Col span={6}>
-      <Card
-        hoverable
-        cover={<img alt='example' src={imgUrl} />}
-        actions={[
-          <EditOutlined key='edit' onClick={() => setIsModalOpen(true)} />,
-          <DeleteOutlined key='delete' onClick={hotelDeleteHandler} />,
-        ]}
-      >
-        <Meta title={name} description={region} />
-        <Rate value={star} disabled />
-      </Card>
-    </Col>
+    <Card
+      hoverable
+      cover={<img alt='example' src={imgUrl} />}
+      actions={[
+        <EditOutlined key='edit' onClick={() => setIsModalOpen(true)} />,
+        <DeleteOutlined key='delete' onClick={hotelDeleteHandler} />,
+      ]}
+    >
+      <Meta title={name} description={region} />
+      <Rate value={star} disabled />
+    </Card>
   );
 }
 

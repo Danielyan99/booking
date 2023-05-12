@@ -12,6 +12,10 @@ export default class HotelService {
     return $api.get<AuthResponse>('/hotel/all');
   }
 
+  static async updateHotel(id: string, hotelData:IHotel): Promise<AxiosResponse<AuthResponse>> {
+    return $api.put<AuthResponse>(`hotel/${id}`, hotelData);
+  }
+
   static async deleteHotel(id: string): Promise<AxiosResponse<AuthResponse>> {
     return $api.delete<AuthResponse>(`/hotel/${id}`);
   }
