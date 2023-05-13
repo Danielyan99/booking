@@ -1,0 +1,28 @@
+.admin-room {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.1rem solid #ddd;
+  margin-bottom: 1rem;
+  &__btns {
+    flex: 0 1 auto;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5rem;
+    .anticon-edit {
+      margin-bottom: 1rem;
+    }
+  }
+  &__form {
+    flex: 0 1 auto;
+    width: 100%;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+  .ant-form-item-required {
+    &::before {
+      display: none !important;
+    }
+  }
+}

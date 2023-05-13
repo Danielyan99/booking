@@ -1,10 +1,10 @@
-import React, {memo, useEffect} from 'react';
+import React, { memo } from 'react';
 import { IEditHotelModalProps } from '@src/components/pages/dashboard/hotels/edit-hotel-modal/types';
 import { Button, Checkbox, Form, Input, message, Modal, Rate, Upload } from 'antd';
 import { nameRules, regionRules } from '@src/components/pages/dashboard/hotels/add-hotel/validation';
 import { PlusOutlined } from '@ant-design/icons';
 import HotelController from '@src/core/controllers/HotelController';
-import { IHotel } from '@src/core/modules/hotel/IHotel';
+import { IHotel } from '@src/core/modules/hotel/types';
 
 function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } : IEditHotelModalProps) {
   const [form] = Form.useForm();
@@ -21,11 +21,12 @@ function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } 
   return (
     <Modal
       open={isModalOpen}
+      title='Edit Hotel'
       footer={[
         <Button key='cancel' onClick={() => setIsModalOpen(false)}>
           Cancel
         </Button>,
-        <Button form='myForm' key='submit' htmlType='submit'>
+        <Button form='edit-hotel-form' key='submit' htmlType='submit'>
           Save
         </Button>,
       ]}
@@ -36,7 +37,7 @@ function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } 
       afterOpenChange={() => form.resetFields()}
     >
       <Form
-        id='myForm'
+        id='edit-hotel-form'
         form={form}
         initialValues={{
           name: currentOpenedHotelData.name,
@@ -50,10 +51,10 @@ function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } 
         }}
         onFinish={handleSubmit}
       >
-        <Form.Item name='region' rules={nameRules()} className='edit-hotel__input'>
+        <Form.Item name='region' rules={nameRules()} className='modal-input'>
           <Input placeholder='Region' />
         </Form.Item>
-        <Form.Item name='name' rules={regionRules()} className='edit-hotel__input'>
+        <Form.Item name='name' rules={regionRules()} className='modal-input'>
           <Input placeholder='Name' />
         </Form.Item>
         <Form.Item name='star' label='Star' rules={[{ required: true }]}>

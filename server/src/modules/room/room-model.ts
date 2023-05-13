@@ -5,7 +5,7 @@ import { Hotel } from '../hotel/hotel-model';
 @Schema({ timestamps: true })
 export class Room {
   @Prop({ required: true })
-  title: string;
+  name: string;
 
   @Prop({ required: true })
   price: number;

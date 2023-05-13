@@ -3,7 +3,7 @@ import { Button, Checkbox, Form, Input, message, Rate, Upload } from 'antd';
 import HotelController from '@src/core/controllers/HotelController';
 import { PlusOutlined } from '@ant-design/icons';
 import { nameRules, regionRules } from '@src/components/pages/dashboard/hotels/add-hotel/validation';
-import { IHotel } from '@src/core/modules/hotel/IHotel';
+import { IHotel } from '@src/core/modules/hotel/types';
 
 function AddHotel() {
   const [form] = Form.useForm();

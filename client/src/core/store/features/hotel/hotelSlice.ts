@@ -1,4 +1,4 @@
-import { IHotel } from '@src/core/modules/hotel/IHotel';
+import { IHotel } from '@src/core/modules/hotel/types';
 import { createSlice } from '@reduxjs/toolkit';
 import { deleteHotel, getHotels, updateHotel } from '@src/core/store/features/hotel/hotelSliceService';
 

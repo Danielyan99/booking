@@ -4,7 +4,7 @@ export function nameRules() {
   return [
     {
       required: true,
-      message: i18n?.t('hotelNameRequiredMessageHint'),
+      message: i18n?.t('roomNameRequiredMessageHint'),
     },
     {
       min: 2,
@@ -17,19 +17,11 @@ export function nameRules() {
   ];
 }
 
-export function regionRules() {
+export function priceRules() {
   return [
     {
       required: true,
-      message: i18n?.t('regionNameRequiredMessageHint'),
-    },
-    {
-      min: 2,
-      message: `${i18n?.t('nameLengthSmallerHint')} 2`,
-    },
-    {
-      max: 16,
-      message: `${i18n?.t('nameLengthBiggerHint')} 24`,
+      message: i18n?.t('priceRequiredMessageHint'),
     },
   ];
 }

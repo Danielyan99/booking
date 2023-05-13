@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 import HotelService from '@src/core/services/HotelService';
-import { IHotel } from '@src/core/modules/hotel/IHotel';
+import { IHotel } from '@src/core/modules/hotel/types';
 
 export const getHotels = createAsyncThunk('hotel/all', async (_, { rejectWithValue }) => {
   try {

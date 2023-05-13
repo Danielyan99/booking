@@ -6,12 +6,16 @@ import { Col, Row, Spin, Typography } from 'antd';
 import { IHotelDB } from '@src/components/pages/dashboard/hotels/hotels-list/types';
 import Hotel from '@src/components/pages/dashboard/hotels/hotel';
 import EditHotelModal from '@src/components/pages/dashboard/hotels/edit-hotel-modal';
+import AddRoomModal from '@src/components/pages/dashboard/hotels/add-room-modal';
+import AdminRoomsModal from '@src/components/pages/dashboard/hotels/admin-rooms-modal';
 
 const { Title } = Typography;
 
 function HotelsList() {
   const { hotels, isLoading, error } = useSelector((state: IRootState) => state.hotel);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddHotelModalOpen, setIsEditHotelModalOpen] = useState(false);
+  const [isAddRoomModalOpen, setIsAddRoomModalOpen] = useState(false);
+  const [isRoomModalOpen, setIsRoomModalOpen] = useState(false);
   const [currentOpenedHotelData, setCurrentOpenedHotelData] = useState({} as IHotelDB);
 
   useEffect(() => {
@@ -35,8 +39,10 @@ function HotelsList() {
                     name={hotel.name}
                     region={hotel.region}
                     star={hotel.star}
-                    imgUrl={hotel.images[0]?.thumbUrl}
-                    setIsModalOpen={setIsModalOpen}
+                    images={hotel.images}
+                    setIsEditHotelModalOpen={setIsEditHotelModalOpen}
+                    setIsAddRoomModalOpen={setIsAddRoomModalOpen}
+                    setIsRoomModalOpen={setIsRoomModalOpen}
                   />
                 </Col>
               ))}
@@ -45,7 +51,9 @@ function HotelsList() {
         )
         : <Title>There is no Hotels yet</Title>}
       {error && <div className='error-message'>{error}</div>}
-      <EditHotelModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} currentOpenedHotelData={currentOpenedHotelData} />
+      <EditHotelModal isModalOpen={isAddHotelModalOpen} setIsModalOpen={setIsEditHotelModalOpen} currentOpenedHotelData={currentOpenedHotelData} />
+      <AddRoomModal isModalOpen={isAddRoomModalOpen} setIsModalOpen={setIsAddRoomModalOpen} hotelId={currentOpenedHotelData._id} />
+      <AdminRoomsModal isModalOpen={isRoomModalOpen} setIsModalOpen={setIsRoomModalOpen} hotelId={currentOpenedHotelData._id} />
     </div>
   );
 }

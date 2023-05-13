@@ -1,5 +1,5 @@
 import HotelService from '@src/core/services/HotelService';
-import { IHotel } from '@src/core/modules/hotel/IHotel';
+import { IHotel } from '@src/core/modules/hotel/types';
 import { getHotels, updateHotel, deleteHotel } from '@src/core/store/features/hotel/hotelSliceService';
 import { store } from '@src/core/store';
 
@@ -27,7 +27,7 @@ export default class HotelController {
   }
 
   static updateHotel(id: string, data: IHotel) {
-    return store.dispatch(updateHotel({id, hotelData: data}));
+    return store.dispatch(updateHotel({ id, hotelData: data }));
   }
 
   static deleteHotel(id: string) {

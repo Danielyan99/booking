@@ -1,15 +1,15 @@
 import React, { memo } from 'react';
-import { Card, message, Rate } from 'antd';
+import { Card, Carousel, message, Rate } from 'antd';
 import { IHotelProps } from '@src/components/pages/dashboard/hotels/hotel/types';
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { DeleteOutlined, EditOutlined, AppstoreAddOutlined, EyeOutlined } from '@ant-design/icons';
 import HotelController from '@src/core/controllers/HotelController';
 
 const { Meta } = Card;
 
-function Hotel({ name, id, star, imgUrl, region, setIsModalOpen }: IHotelProps) {
+function Hotel({ name, id, star, images, region, setIsEditHotelModalOpen, setIsAddRoomModalOpen, setIsRoomModalOpen }: IHotelProps) {
   const hotelDeleteHandler = async () => {
-    const response = await HotelController.deleteHotel(id) as any;
-    if (response?.payload.data) {
+    const response = await HotelController.deleteHotel(id);
+    if (response?.payload) {
       message.success('Hotel was successfully deleted');
     }
   };
@@ -17,10 +17,16 @@ function Hotel({ name, id, star, imgUrl, region, setIsModalOpen }: IHotelProps) 
   return (
     <Card
       hoverable
-      cover={<img alt='example' src={imgUrl} />}
+      cover={(
+        <Carousel dots={{ className: 'dots' }} autoplay>
+          {images.map((img, i) => (<img key={img.uid || i} src={img.thumbUrl} alt='hotel-img' />))}
+        </Carousel>
+)}
       actions={[
-        <EditOutlined key='edit' onClick={() => setIsModalOpen(true)} />,
+        <EditOutlined key='edit' onClick={() => setIsEditHotelModalOpen(true)} />,
+        <AppstoreAddOutlined key='add-room' onClick={() => setIsAddRoomModalOpen(true)} />,
         <DeleteOutlined key='delete' onClick={hotelDeleteHandler} />,
+        <EyeOutlined key='rooms' onClick={() => setIsRoomModalOpen(true)} />,
       ]}
     >
       <Meta title={name} description={region} />
