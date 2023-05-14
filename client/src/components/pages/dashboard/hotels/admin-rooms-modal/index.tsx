@@ -4,6 +4,7 @@ import { IAdminRoomsModalProps } from '@src/components/pages/dashboard/hotels/ad
 import RoomController from '@src/core/controllers/RoomController';
 import AdminRoom from '@src/components/pages/dashboard/hotels/admin-rooms-modal/admin-room';
 import { IRoom } from '@src/core/modules/room/types';
+import Title from 'antd/lib/typography/Title';
 
 function AdminRoomsModal({ isModalOpen, setIsModalOpen, hotelId }: IAdminRoomsModalProps) {
   const [hotelRooms, setHotelRooms] = useState<any>([]);
@@ -14,7 +15,7 @@ function AdminRoomsModal({ isModalOpen, setIsModalOpen, hotelId }: IAdminRoomsMo
       const roomsResponse = await RoomController.getHotelRooms(hotelId);
       setHotelRooms(roomsResponse.data);
     })();
-  }, [hotelId]);
+  }, [isModalOpen]);
 
   return (
     <Modal
@@ -25,9 +26,9 @@ function AdminRoomsModal({ isModalOpen, setIsModalOpen, hotelId }: IAdminRoomsMo
         setIsModalOpen(false);
       }}
     >
-      {hotelRooms.map((room: IRoom) => (
-        <AdminRoom key={room._id} name={room.name} price={room.price} />
-      ))}
+      {hotelRooms.length ? hotelRooms.map((room: IRoom) => (
+        <AdminRoom key={room._id} name={room.name} price={room.price} id={room._id} />
+      )) : <Title level={4}>There is no Rooms yet</Title>}
     </Modal>
   );
 }

@@ -8,6 +8,10 @@ export default class RoomService {
     return $api.post<AuthResponse>('/room/create', roomData);
   }
 
+  static updateRoom(roomData: IRoom): Promise<AxiosResponse<AuthResponse>> {
+    return $api.put<AuthResponse>(`/room/${roomData._id}`, roomData);
+  }
+
   static getHotelRooms(id: string): Promise<AxiosResponse<AuthResponse>> {
     return $api.get<AuthResponse>(`/room/getHotelRooms?hotelId=${id}`);
   }

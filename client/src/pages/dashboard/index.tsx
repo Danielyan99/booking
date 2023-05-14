@@ -5,9 +5,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 function Dashboard() {
   return (
     <div>
-      <div>
-        <Sidebar />
-      </div>
+      <Sidebar />
     </div>
   );
 }

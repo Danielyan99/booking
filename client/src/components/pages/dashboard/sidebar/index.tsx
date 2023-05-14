@@ -5,11 +5,12 @@ import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
 const { Header, Content, Sider } = Layout;
-const getDynamicComponent = (query: string) => dynamic(() => import(`../${query}`));
+const getDynamicComponent = (query: string) => dynamic(() => import(`../${query ?? 'main'}`));
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter();
+
   const breadcrumbItems = useMemo(() => [{ title: 'dashboard' }, { title: router.query.tab }], [router.query.tab]);
   const DynamicContentComponent = useMemo(() => getDynamicComponent(router.query.tab as string), [router.query.tab]);
 

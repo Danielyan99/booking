@@ -8,7 +8,7 @@ const UserOverlayMenu: MenuProps['items'] = [
     label: 'profile',
     key: 'profile',
     icon: <SolutionOutlined />,
-    onClick: () => console.log('profile'),
+    // onClick: () => console.log('profile'),
   },
   {
     label: 'logout',

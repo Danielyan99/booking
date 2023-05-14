@@ -7,6 +7,10 @@ export default class RoomController {
     return RoomService.createRoom(data);
   }
 
+  static updateRoom(data: IRoom) {
+    return RoomService.updateRoom(data);
+  }
+
   static getHotelRooms(id: string) {
     return RoomService.getHotelRooms(id);
   }
