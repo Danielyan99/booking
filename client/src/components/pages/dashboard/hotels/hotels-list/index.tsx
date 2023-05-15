@@ -8,10 +8,12 @@ import Hotel from '@src/components/pages/dashboard/hotels/hotel';
 import EditHotelModal from '@src/components/pages/dashboard/hotels/edit-hotel-modal';
 import AddRoomModal from '@src/components/pages/dashboard/hotels/add-room-modal';
 import AdminRoomsModal from '@src/components/pages/dashboard/hotels/admin-rooms-modal';
+import { useTranslation } from 'next-i18next';
 
 const { Title } = Typography;
 
 function HotelsList() {
+  const { t } = useTranslation('common');
   const { hotels, isLoading, error } = useSelector((state: IRootState) => state.hotel);
   const [isAddHotelModalOpen, setIsEditHotelModalOpen] = useState(false);
   const [isAddRoomModalOpen, setIsAddRoomModalOpen] = useState(false);
@@ -49,7 +51,7 @@ function HotelsList() {
             </Row>
           </div>
         )
-        : <Title>There is no Hotels yet</Title>}
+        : <Title>{t('thereIsNoHotelsPara')}</Title>}
       {error && <div className='error-message'>{error}</div>}
       <EditHotelModal isModalOpen={isAddHotelModalOpen} setIsModalOpen={setIsEditHotelModalOpen} currentOpenedHotelData={currentOpenedHotelData} />
       <AddRoomModal isModalOpen={isAddRoomModalOpen} setIsModalOpen={setIsAddRoomModalOpen} hotelId={currentOpenedHotelData._id} />

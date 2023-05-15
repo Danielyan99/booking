@@ -3,14 +3,17 @@ import { Card, Carousel, message, Rate } from 'antd';
 import { IHotelProps } from '@src/components/pages/dashboard/hotels/hotel/types';
 import { DeleteOutlined, EditOutlined, AppstoreAddOutlined, EyeOutlined } from '@ant-design/icons';
 import HotelController from '@src/core/controllers/HotelController';
+import { useTranslation } from 'next-i18next';
 
 const { Meta } = Card;
 
 function Hotel({ name, id, star, images, region, setIsEditHotelModalOpen, setIsAddRoomModalOpen, setIsRoomModalOpen }: IHotelProps) {
+  const { t } = useTranslation('common');
+
   const hotelDeleteHandler = async () => {
     const response = await HotelController.deleteHotel(id);
     if (response?.payload) {
-      message.success('Hotel was successfully deleted');
+      message.success(t('hotelDeletedSuccessMessage'));
     }
   };
 

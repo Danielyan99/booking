@@ -5,18 +5,20 @@ import { EditOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { nameRules, priceRules } from '@src/components/pages/dashboard/hotels/add-room-modal/validation';
 import { IRoom } from '@src/core/modules/room/types';
 import RoomController from '@src/core/controllers/RoomController';
+import { useTranslation } from 'next-i18next';
 
 function AdminRoom({ name, price, id }: IAdminRoom) {
-  const [isEditMode, setIsEditMode] = useState(false);
   const [form] = Form.useForm();
+  const { t } = useTranslation('common');
+  const [isEditMode, setIsEditMode] = useState(false);
 
   const handleSubmit = async (data: IRoom) => {
     data._id = id;
     const response = await RoomController.updateRoom(data);
     if (response.data && !response.error) {
-      message.success('Room was successfully updated');
+      message.success(t('roomUpdatedSuccessMessage'));
     } else {
-      message.error('Something went wrong');
+      message.error(t('somethingWentWrongMessage'));
     }
     setIsEditMode(false);
   };
@@ -24,10 +26,10 @@ function AdminRoom({ name, price, id }: IAdminRoom) {
   return (
     <div className='admin-room'>
       <Form className='admin-room__form' form={form} initialValues={{ name, price }} disabled={!isEditMode} onFinish={handleSubmit}>
-        <Form.Item name='name' label='Name' rules={nameRules()} className='modal-input'>
+        <Form.Item name='name' label={t('name')} rules={nameRules()} className='modal-input'>
           <Input placeholder='Name' />
         </Form.Item>
-        <Form.Item name='price' label='Price' rules={priceRules()} className='modal-input'>
+        <Form.Item name='price' label={t('price')} rules={priceRules()} className='modal-input'>
           <InputNumber />
         </Form.Item>
       </Form>

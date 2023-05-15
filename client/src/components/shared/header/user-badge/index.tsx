@@ -1,17 +1,19 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { Dropdown } from 'antd';
-import UserOverlayMenu from '@src/components/shared/header/user-badge/overlay-menu/UserMenu';
-import AdminOverlayMenu from '@src/components/shared/header/user-badge/overlay-menu/AdminMenu';
 import UserAvatar from '@src/components/shared/header/user-badge/user-avatar';
 import { useSelector } from 'react-redux';
 import { IRootState } from '@src/core/store';
-import { UserRoles } from '@src/core/constants/user';
+import { useRouter } from 'next/router';
+import getDropdownMenu from '@src/components/shared/header/user-badge/overlay-menu';
 
 function UserBadge() {
   const { user } = useSelector((state: IRootState) => state.user);
+  const router = useRouter();
+
+  const getDropdownItems = useCallback(() => getDropdownMenu(), [router.locale, user]);
 
   return (
-    <Dropdown menu={{ items: user.role === UserRoles.Admin ? AdminOverlayMenu : UserOverlayMenu }} trigger={['click']}>
+    <Dropdown menu={{ items: getDropdownItems() }} trigger={['click']}>
       <div>
         <UserAvatar />
       </div>

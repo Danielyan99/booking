@@ -5,17 +5,19 @@ import { nameRules, regionRules } from '@src/components/pages/dashboard/hotels/a
 import { PlusOutlined } from '@ant-design/icons';
 import HotelController from '@src/core/controllers/HotelController';
 import { IHotel } from '@src/core/modules/hotel/types';
+import { useTranslation } from 'next-i18next';
 
 function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } : IEditHotelModalProps) {
   const [form] = Form.useForm();
+  const { t } = useTranslation('common');
   const normFile = (e: any) => (Array.isArray(e) ? e : e?.fileList);
 
   const handleSubmit = async (data: IHotel) => {
     const response = await HotelController.updateHotel(currentOpenedHotelData._id, data);
     if (response?.payload && !response.error) {
-      message.success('Hotel was successfully updated');
+      message.success(t('hotelUpdatedSuccessMessage'));
     } else {
-      message.error('Something went wrong');
+      message.error(t('somethingWentWrongMessage'));
     }
     setIsModalOpen(false);
   };
@@ -23,13 +25,13 @@ function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } 
   return (
     <Modal
       open={isModalOpen}
-      title='Edit Hotel'
+      title={t('editHotel')}
       footer={[
         <Button key='cancel' onClick={() => setIsModalOpen(false)}>
-          Cancel
+          {t('cancel')}
         </Button>,
         <Button form='edit-hotel-form' key='submit' htmlType='submit'>
-          Save
+          {t('save')}
         </Button>,
       ]}
       onCancel={() => {
@@ -54,52 +56,52 @@ function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } 
         onFinish={handleSubmit}
       >
         <Form.Item name='region' rules={nameRules()} className='modal-input'>
-          <Input placeholder='Region' />
+          <Input placeholder={t('region') || 'Region'} />
         </Form.Item>
         <Form.Item name='name' rules={regionRules()} className='modal-input'>
-          <Input placeholder='Name' />
+          <Input placeholder={t('name') || 'Name'} />
         </Form.Item>
-        <Form.Item name='star' label='Star' rules={[{ required: true }]}>
+        <Form.Item name='star' label={t('star')} rules={[{ required: true }]}>
           <Rate />
         </Form.Item>
         <Form.Item name='cancellationPolicy' label='Cancellation Policy'>
           <Checkbox.Group>
-            <Checkbox value='freeCancellation'>Free Cancellation</Checkbox>
-            <Checkbox value='bookWithoutCreditCard'>Book Without Credit Card</Checkbox>
-            <Checkbox value='noPrepayment'>No Prepayment</Checkbox>
+            <Checkbox value='freeCancellation'>{t('freeCancellation')}</Checkbox>
+            <Checkbox value='bookWithoutCreditCard'>{t('bookWithoutCreditCard')}</Checkbox>
+            <Checkbox value='noPrepayment'>{t('noPrepayment')}</Checkbox>
           </Checkbox.Group>
         </Form.Item>
         <Form.Item name='facilities' label='Facilities'>
           <Checkbox.Group>
-            <Checkbox value='swimmingPool'>Swimming Pool</Checkbox>
-            <Checkbox value='spaCenter'>Spa Center</Checkbox>
-            <Checkbox value='petsAllowed'>Pets Allowed</Checkbox>
-            <Checkbox value='freeWiFi'>Free WiFi</Checkbox>
-            <Checkbox value='fitnessCenter'>Fitness Center</Checkbox>
-            <Checkbox value='parking'>Parking</Checkbox>
-            <Checkbox value='restaurant'>Restaurant</Checkbox>
+            <Checkbox value='swimmingPool'>{t('swimmingPool')}</Checkbox>
+            <Checkbox value='spaCenter'>{t('spaCenter')}</Checkbox>
+            <Checkbox value='petsAllowed'>{t('petsAllowed')}</Checkbox>
+            <Checkbox value='freeWiFi'>{t('freeWiFi')}</Checkbox>
+            <Checkbox value='fitnessCenter'>{t('fitnessCenter')}</Checkbox>
+            <Checkbox value='parking'>{t('parking')}</Checkbox>
+            <Checkbox value='restaurant'>{t('restaurant')}</Checkbox>
           </Checkbox.Group>
         </Form.Item>
         <Form.Item name='funThings' label='Fun things to do'>
           <Checkbox.Group>
-            <Checkbox value='beach'>Beach</Checkbox>
-            <Checkbox value='massage'>Massage</Checkbox>
-            <Checkbox value='billiards'>Billiards</Checkbox>
-            <Checkbox value='diving'>Diving</Checkbox>
+            <Checkbox value='beach'>{t('beach')}</Checkbox>
+            <Checkbox value='massage'>{t('massage')}</Checkbox>
+            <Checkbox value='billiards'>{t('billiards')}</Checkbox>
+            <Checkbox value='diving'>{t('diving')}</Checkbox>
           </Checkbox.Group>
         </Form.Item>
         <Form.Item name='meals' label='Meals'>
           <Checkbox.Group>
-            <Checkbox value='allInclusive'>All Inclusive</Checkbox>
-            <Checkbox value='breakfast'>Breakfast</Checkbox>
-            <Checkbox value='selfCatering'>Self Catering</Checkbox>
+            <Checkbox value='allInclusive'>{t('allInclusive')}</Checkbox>
+            <Checkbox value='breakfast'>{t('breakfast')}</Checkbox>
+            <Checkbox value='selfCatering'>{t('selfCatering')}</Checkbox>
           </Checkbox.Group>
         </Form.Item>
-        <Form.Item name='images' label='Upload' valuePropName='fileList' getValueFromEvent={normFile}>
+        <Form.Item name='images' label={t('upload')} valuePropName='fileList' getValueFromEvent={normFile}>
           <Upload listType='picture-card' multiple accept='.png,.jpeg,.jpg,.webp' beforeUpload={() => false}>
             <div>
               <PlusOutlined />
-              Upload
+              {t('upload')}
             </div>
           </Upload>
         </Form.Item>

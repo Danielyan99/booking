@@ -5,8 +5,10 @@ import RoomController from '@src/core/controllers/RoomController';
 import AdminRoom from '@src/components/pages/dashboard/hotels/admin-rooms-modal/admin-room';
 import { IRoom } from '@src/core/modules/room/types';
 import Title from 'antd/lib/typography/Title';
+import { useTranslation } from 'next-i18next';
 
 function AdminRoomsModal({ isModalOpen, setIsModalOpen, hotelId }: IAdminRoomsModalProps) {
+  const { t } = useTranslation('common');
   const [hotelRooms, setHotelRooms] = useState<any>([]);
 
   useEffect(() => {
@@ -20,7 +22,7 @@ function AdminRoomsModal({ isModalOpen, setIsModalOpen, hotelId }: IAdminRoomsMo
   return (
     <Modal
       open={isModalOpen}
-      title='Rooms'
+      title={t('rooms')}
       footer={false}
       onCancel={() => {
         setIsModalOpen(false);
@@ -28,7 +30,7 @@ function AdminRoomsModal({ isModalOpen, setIsModalOpen, hotelId }: IAdminRoomsMo
     >
       {hotelRooms.length ? hotelRooms.map((room: IRoom) => (
         <AdminRoom key={room._id} name={room.name} price={room.price} id={room._id} />
-      )) : <Title level={4}>There is no Rooms yet</Title>}
+      )) : <Title level={4}>{t('thereIsNoRoomsPara')}</Title>}
     </Modal>
   );
 }
