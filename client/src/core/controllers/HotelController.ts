@@ -19,7 +19,7 @@ export default class HotelController {
       hotelData.images = [noImageData];
     }
 
-    return HotelService.createHotel({ ...hotelData });
+    return HotelService.createHotel({ ...hotelData }) as any;
   }
 
   static getAll() {
@@ -27,7 +27,7 @@ export default class HotelController {
   }
 
   static updateHotel(id: string, data: IHotel) {
-    return store.dispatch(updateHotel({ id, hotelData: data }));
+    return store.dispatch(updateHotel({ id, hotelData: data })) as any;
   }
 
   static deleteHotel(id: string) {

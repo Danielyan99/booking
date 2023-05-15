@@ -10,8 +10,10 @@ function AddRoomModal({ isModalOpen, setIsModalOpen, hotelId } :IAddRoomModalPro
 
   const handleSubmit = async (data: IRoom) => {
     const response = await RoomController.createRoom(hotelId, data);
-    if (response.data) {
+    if (response.data && !response.error) {
       message.success('Room was successfully created');
+    } else {
+      message.error('Something went wrong');
     }
     setIsModalOpen(false);
   };

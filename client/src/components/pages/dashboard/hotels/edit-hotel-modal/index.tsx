@@ -12,8 +12,10 @@ function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } 
 
   const handleSubmit = async (data: IHotel) => {
     const response = await HotelController.updateHotel(currentOpenedHotelData._id, data);
-    if (response?.payload) {
+    if (response?.payload && !response.error) {
       message.success('Hotel was successfully updated');
+    } else {
+      message.error('Something went wrong');
     }
     setIsModalOpen(false);
   };

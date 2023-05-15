@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, memo } from 'react';
 import { Breadcrumb, Layout, Menu } from 'antd';
 import sidebarMenuItems from '@src/components/pages/dashboard/sidebar/SideBarConstants';
 import { useRouter } from 'next/router';
@@ -31,4 +31,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default memo(Sidebar);

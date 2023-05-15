@@ -2,6 +2,7 @@ import React from 'react';
 import { MenuProps } from 'antd';
 import { PoweroffOutlined, SolutionOutlined } from '@ant-design/icons';
 import AuthController from '@src/core/controllers/AuthController';
+import Router from 'next/router';
 
 const UserOverlayMenu: MenuProps['items'] = [
   {
@@ -14,7 +15,10 @@ const UserOverlayMenu: MenuProps['items'] = [
     label: 'logout',
     key: 'logout',
     icon: <PoweroffOutlined />,
-    onClick: () => AuthController.logout(),
+    onClick: () => {
+      Router.push('/');
+      AuthController.logout();
+    },
   },
 ];
 

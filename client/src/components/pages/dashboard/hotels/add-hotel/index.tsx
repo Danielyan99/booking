@@ -12,9 +12,11 @@ function AddHotel() {
 
   const handleSubmit = async (data: IHotel) => {
     const response = await HotelController.createHotel(data);
-    if (response.data) {
+    if (response.data && !response.error) {
       message.success('Hotel was successfully created');
       form.resetFields();
+    } else {
+      message.error('Something went wrong');
     }
   };
 

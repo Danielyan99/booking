@@ -13,8 +13,10 @@ function AdminRoom({ name, price, id }: IAdminRoom) {
   const handleSubmit = async (data: IRoom) => {
     data._id = id;
     const response = await RoomController.updateRoom(data);
-    if (response.data) {
+    if (response.data && !response.error) {
       message.success('Room was successfully updated');
+    } else {
+      message.error('Something went wrong');
     }
     setIsEditMode(false);
   };
