@@ -53,6 +53,7 @@
   "priceRequiredMessageHint": "Խնդրում ենք մուտքագրել Արժեքը",
   "roomCreatedSuccessMessage": "Սենյակը հաջողությամբ ստեղծվեց",
   "roomUpdatedSuccessMessage": "Սենյակը հաջողությամբ թարմացվեց",
+  "roomDeletedSuccessMessage": "Սենյակը հաջողությամբ ջնջվեց",
   "price": "Արժեքը",
   "rooms": "Սենյակներ",
   "thereIsNoRoomsPara": "Սենյակներ դեռ չկան",

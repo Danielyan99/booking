@@ -17,8 +17,8 @@ function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter();
 
-  const breadcrumbItems = useMemo(() => [{ title: t('dashboard') }, { title: t(router.query.tab as string) }], [router.query.tab]);
-  const DynamicContentComponent = useMemo(() => getDynamicComponent(router.query.tab as string), [router.query.tab]);
+  const breadcrumbItems = useCallback((t: (arg: string) => typeof arg) => [{ title: t('dashboard') }, { title: t(router.query.tab as string) }], [router.query.tab, router.locale]);
+  const DynamicContentComponent = useMemo(() => getDynamicComponent(router.query.tab as string), [router.query.tab, router.locale]);
 
   const getSidebarItems = useCallback(() => {
     if (user?.role === UserRoles.Admin) {
@@ -36,7 +36,7 @@ function Sidebar() {
       <Layout className='site-layout'>
         <Header style={{ padding: 0 }} />
         <Content style={{ margin: '0 16px' }}>
-          <Breadcrumb items={breadcrumbItems} style={{ margin: '16px 0' }} />
+          <Breadcrumb items={breadcrumbItems(t)} style={{ margin: '16px 0' }} />
           <DynamicContentComponent />
         </Content>
       </Layout>

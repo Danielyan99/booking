@@ -53,6 +53,7 @@
   "priceRequiredMessageHint": "Please input Price",
   "roomCreatedSuccessMessage": "Room was successfully created",
   "roomUpdatedSuccessMessage": "Room was successfully updated",
+  "roomDeletedSuccessMessage": "Room was successfully deleted",
   "price": "Price",
   "rooms": "Rooms",
   "thereIsNoRoomsPara": "There is no Rooms yet",

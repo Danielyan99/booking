@@ -11,6 +11,10 @@ export default class RoomController {
     return RoomService.updateRoom(data) as any;
   }
 
+  static deleteRoom(id: string) {
+    return RoomService.deleteRoom(id) as any;
+  }
+
   static getHotelRooms(id: string) {
     return RoomService.getHotelRooms(id);
   }

@@ -1,13 +1,13 @@
 import React, { memo, useState } from 'react';
 import { IAdminRoom } from '@src/components/pages/dashboard/hotels/admin-rooms-modal/admin-room/types';
 import { Form, Input, InputNumber, message } from 'antd';
-import { EditOutlined, CheckCircleOutlined } from '@ant-design/icons';
+import { EditOutlined, CheckCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 import { nameRules, priceRules } from '@src/components/pages/dashboard/hotels/add-room-modal/validation';
 import { IRoom } from '@src/core/modules/room/types';
 import RoomController from '@src/core/controllers/RoomController';
 import { useTranslation } from 'next-i18next';
 
-function AdminRoom({ name, price, id }: IAdminRoom) {
+function AdminRoom({ name, price, id, removeRoomById }: IAdminRoom) {
   const [form] = Form.useForm();
   const { t } = useTranslation('common');
   const [isEditMode, setIsEditMode] = useState(false);
@@ -23,6 +23,16 @@ function AdminRoom({ name, price, id }: IAdminRoom) {
     setIsEditMode(false);
   };
 
+  const deleteRoomHandler = async () => {
+    const response = await RoomController.deleteRoom(id);
+    if (response.data && !response.error) {
+      message.success(t('roomDeletedSuccessMessage'));
+      removeRoomById(id);
+    } else {
+      message.error(t('somethingWentWrongMessage'));
+    }
+  };
+
   return (
     <div className='admin-room'>
       <Form className='admin-room__form' form={form} initialValues={{ name, price }} disabled={!isEditMode} onFinish={handleSubmit}>
@@ -36,6 +46,7 @@ function AdminRoom({ name, price, id }: IAdminRoom) {
       <div className='admin-room__btns'>
         <EditOutlined onClick={() => setIsEditMode(!isEditMode)} style={{ fontSize: 20 }} />
         {isEditMode && <CheckCircleOutlined onClick={() => form.submit()} style={{ fontSize: 20 }} />}
+        <DeleteOutlined onClick={deleteRoomHandler} style={{ fontSize: 20 }} />
       </div>
     </div>
   );

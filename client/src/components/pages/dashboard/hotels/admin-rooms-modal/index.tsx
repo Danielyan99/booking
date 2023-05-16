@@ -19,6 +19,10 @@ function AdminRoomsModal({ isModalOpen, setIsModalOpen, hotelId }: IAdminRoomsMo
     })();
   }, [isModalOpen]);
 
+  const removeRoomById = (id: string) => {
+    setHotelRooms(hotelRooms.filter((room: IRoom) => room._id !== id));
+  };
+
   return (
     <Modal
       open={isModalOpen}
@@ -29,7 +33,7 @@ function AdminRoomsModal({ isModalOpen, setIsModalOpen, hotelId }: IAdminRoomsMo
       }}
     >
       {hotelRooms.length ? hotelRooms.map((room: IRoom) => (
-        <AdminRoom key={room._id} name={room.name} price={room.price} id={room._id} />
+        <AdminRoom key={room._id} name={room.name} price={room.price} id={room._id} removeRoomById={removeRoomById} />
       )) : <Title level={4}>{t('thereIsNoRoomsPara')}</Title>}
     </Modal>
   );

@@ -9,8 +9,8 @@
     display: flex;
     flex-direction: column;
     padding-top: 0.5rem;
-    .anticon-edit {
-      margin-bottom: 1rem;
+    span {
+      margin-bottom: 0.5rem;
     }
   }
   &__form {
