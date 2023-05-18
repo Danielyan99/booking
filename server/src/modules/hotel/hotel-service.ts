@@ -38,4 +38,13 @@ export class HotelService {
   getAll() {
     return this.hotelModel.find();
   }
+
+  async getHotelSections() {
+    const data = { weOffer: [], bestPlaces: [], randomRegion: [] };
+    data.weOffer = await this.hotelModel.find();
+    data.bestPlaces = await this.hotelModel.find({ star: 5 || 4 });
+    const randomDoc = (await this.hotelModel.aggregate([{ $sample: { size: 1 } }])) as Array<{ region: string }>;
+    data.randomRegion = await this.hotelModel.find({ region: randomDoc[0].region });
+    return data;
+  }
 }

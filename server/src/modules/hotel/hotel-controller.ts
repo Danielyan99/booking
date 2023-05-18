@@ -39,4 +39,9 @@ export class HotelController {
   getAll() {
     return this.hotelService.getAll();
   }
+
+  @Get('/sections')
+  getHotelSections() {
+    return this.hotelService.getHotelSections();
+  }
 }
