@@ -35,9 +35,3 @@
 // themes
 @import 'themes/theme';
 @import 'themes/admin';
-
-:global {
-  .ant-select-dropdown {
-    display: none !important;
-  }
-}

@@ -6,10 +6,12 @@ import { ISectionsProps } from '@src/components/pages/main/offers/types';
 
 function Offers({ weOffer, bestPlaces, randomRegion } : ISectionsProps) {
   return (
-    <div>
-      <WeOffer weOffer={weOffer} />
-      <BestPlaces bestPlaces={bestPlaces} />
-      <RandomRegion randomRegion={randomRegion} />
+    <div className='offers'>
+      <div className='container'>
+        <WeOffer weOffer={weOffer} />
+        <BestPlaces bestPlaces={bestPlaces} />
+        <RandomRegion randomRegion={randomRegion} />
+      </div>
     </div>
   );
 }

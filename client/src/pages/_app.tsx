@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import { appWithTranslation } from 'next-i18next';
 import Layout from '@src/shared/ui/Layout';
 import '@src/styles/sass/main.scss';
+import 'react-multi-carousel/lib/styles.css';
 import { Provider } from 'react-redux';
 import { store } from '@src/core/store';
 import { useEffect } from 'react';

@@ -5,3 +5,10 @@ export interface ISectionsProps {
   bestPlaces: Array<IHotelDB>,
   randomRegion: Array<IHotelDB>,
 }
+
+export interface IOfferHotel {
+  img: string;
+  name: string;
+  region: string;
+  price: number;
+}
