@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { IHotelDB } from '@src/components/pages/dashboard/hotels/hotels-list/types';
 
-function BestPlaces(hotels: Array<IHotelDB>) {
+function BestPlaces({ bestPlaces }: {bestPlaces: Array<IHotelDB>}) {
   return (
     <div>
       <div>

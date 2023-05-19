@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { IHotelDB } from '@src/components/pages/dashboard/hotels/hotels-list/types';
 
-function RandomRegion(hotels: Array<IHotelDB>) {
+function RandomRegion({ randomRegion }: {randomRegion: Array<IHotelDB>}) {
   return (
     <div>
       <div>
