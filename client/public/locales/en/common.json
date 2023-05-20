@@ -67,5 +67,10 @@
   "reservedRooms": "Reserved Rooms",
   "dashboard": "Dashboard",
   "profile": "Profile",
-  "logout": "Logout"
+  "logout": "Logout",
+  "weOffer": "We Offer",
+  "weOfferPara": "Most Visited Places",
+  "from": "from",
+  "bestHotels": "Best Hotels",
+  "bestHotelsPara": "Hotels With High Rating"
 }

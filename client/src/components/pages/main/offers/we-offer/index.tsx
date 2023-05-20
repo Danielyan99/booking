@@ -16,7 +16,7 @@ function WeOffer({ weOffer: hotels }: { weOffer: Array<IHotelDB> }) {
     <div className='main-section'>
       <div className='main-section__header'>
         <Title level={2}>{t('weOffer')}</Title>
-        <Paragraph className='main-section__para'>sdfsdf</Paragraph>
+        <Paragraph className='main-section__para'>{t('weOfferPara')}</Paragraph>
       </div>
       <Carousel responsive={responsive}>
         {hotels.map((hotel: IHotelDB) => (

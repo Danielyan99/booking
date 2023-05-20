@@ -1,0 +1,11 @@
+.offers {
+  background-color: #fbffff;
+  padding: 4rem 0;
+
+  .main-section {
+    margin-top: 5rem;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

@@ -18,7 +18,9 @@ function OfferHotel({ img, name, region, price }: IOfferHotel) {
       </div>
       <div className='offer-hotel__price'>
         {t('from')}
+        {' '}
         {price}
+        $
       </div>
     </div>
   );
