@@ -11,8 +11,8 @@ export function nameRules() {
       message: `${i18n?.t('nameLengthSmallerHint')} 2`,
     },
     {
-      max: 16,
-      message: `${i18n?.t('nameLengthBiggerHint')} 24`,
+      max: 64,
+      message: `${i18n?.t('nameLengthBiggerHint')} 64`,
     },
   ];
 }
@@ -28,8 +28,8 @@ export function regionRules() {
       message: `${i18n?.t('nameLengthSmallerHint')} 2`,
     },
     {
-      max: 16,
-      message: `${i18n?.t('nameLengthBiggerHint')} 24`,
+      max: 64,
+      message: `${i18n?.t('nameLengthBiggerHint')} 64`,
     },
   ];
 }

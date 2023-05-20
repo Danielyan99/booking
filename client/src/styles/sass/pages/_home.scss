@@ -22,12 +22,18 @@
       align-items: center;
       height: 100%;
       width: 100%;
+      form {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
     }
     .search-btn {
       margin-left: 0.7rem;
     }
     .top-section__input {
       max-width: 420px;
+      width: 100%;
       margin-right: 0.7rem;
     }
   }

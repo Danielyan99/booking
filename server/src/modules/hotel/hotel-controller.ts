@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { HotelService } from './hotel-service';
 import { Roles } from '../../helpers/roles/roles.decorator';
 import { RolesEnum } from '../../helpers/roles/roles.enum';
@@ -43,5 +43,10 @@ export class HotelController {
   @Get('/sections')
   getHotelSections() {
     return this.hotelService.getHotelSections();
+  }
+
+  @Get('/search')
+  getHotelsBySearch(@Query() { searchKey }) {
+    return this.hotelService.getHotelsBySearch(searchKey);
   }
 }

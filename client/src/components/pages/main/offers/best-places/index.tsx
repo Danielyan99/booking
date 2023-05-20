@@ -12,7 +12,6 @@ const { Paragraph } = Typography;
 function BestPlaces({ bestPlaces: hotels }: {bestPlaces: Array<IHotelDB>}) {
   const { t } = useTranslation('common');
 
-  console.log(hotels);
   return (
     <div className='main-section'>
       <div className='main-section__header'>

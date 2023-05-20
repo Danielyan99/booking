@@ -1,7 +1,9 @@
 import HotelService from '@src/core/services/HotelService';
 import { IHotel } from '@src/core/modules/hotel/types';
 import { getHotels, updateHotel, deleteHotel } from '@src/core/store/features/hotel/hotelSliceService';
+import { searchHotel } from '@src/core/store/features/searched-hotels/searchedHotelsService';
 import { store } from '@src/core/store';
+import { ISearchData } from '@src/components/pages/main/top-section/types';
 
 export default class HotelController {
   static createHotel(hotelData: IHotel) {
@@ -32,5 +34,9 @@ export default class HotelController {
 
   static deleteHotel(id: string) {
     return store.dispatch(deleteHotel(id));
+  }
+
+  static searchHotel(searchKey: string | string[]) {
+    return store.dispatch(searchHotel(searchKey));
   }
 }

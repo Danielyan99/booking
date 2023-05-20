@@ -47,4 +47,17 @@ export class HotelService {
     data.randomRegion = await this.hotelModel.find({ region: randomDoc[0].region });
     return data;
   }
+
+  async getHotelsBySearch(searchKey) {
+    return this.hotelModel.find({
+      $or: [
+        {
+          name: { $regex: searchKey },
+        },
+        {
+          region: { $regex: searchKey },
+        },
+      ],
+    });
+  }
 }

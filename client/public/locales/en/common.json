@@ -72,5 +72,8 @@
   "weOfferPara": "Most Visited Places",
   "from": "from",
   "bestHotels": "Best Hotels",
-  "bestHotelsPara": "Hotels With High Rating"
+  "bestHotelsPara": "Hotels With High Rating",
+  "whereAreYouGoing": "Where are you going?",
+  "search": "Search",
+  "hotelsCount": "Hotels Count"
 }

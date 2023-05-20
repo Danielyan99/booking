@@ -1,0 +1,19 @@
+.search-hotels {
+  display: flex;
+  margin-top: 2.5rem;
+  padding-bottom: 2.5rem ;
+  .hotels-content {
+    .hotels-item {
+      display: flex;
+      &__img {
+        border-radius: 1rem;
+      }
+      &__content {
+
+      }
+      &__right {
+
+      }
+    }
+  }
+}
