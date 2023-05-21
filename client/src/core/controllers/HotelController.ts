@@ -3,7 +3,6 @@ import { IHotel } from '@src/core/modules/hotel/types';
 import { getHotels, updateHotel, deleteHotel } from '@src/core/store/features/hotel/hotelSliceService';
 import { searchHotel } from '@src/core/store/features/searched-hotels/searchedHotelsService';
 import { store } from '@src/core/store';
-import { ISearchData } from '@src/components/pages/main/top-section/types';
 
 export default class HotelController {
   static createHotel(hotelData: IHotel) {
@@ -38,5 +37,9 @@ export default class HotelController {
 
   static searchHotel(searchKey: string | string[]) {
     return store.dispatch(searchHotel(searchKey));
+  }
+
+  static getHotel(id: string) {
+    return HotelService.getHotel(id);
   }
 }

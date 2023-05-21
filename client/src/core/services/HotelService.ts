@@ -23,4 +23,8 @@ export default class HotelService {
   static async searchHotel(searchKey: string | string[]): Promise<AxiosResponse<AuthResponse>> {
     return $api.get<AuthResponse>(`/hotel/search?searchKey=${searchKey}`);
   }
+
+  static getHotel(id: string) {
+    return $api.get<AuthResponse>(`/hotel/get/${id}`);
+  }
 }

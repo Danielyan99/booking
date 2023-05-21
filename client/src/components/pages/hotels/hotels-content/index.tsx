@@ -8,7 +8,7 @@ import Title from 'antd/lib/typography/Title';
 import { useTranslation } from 'next-i18next';
 
 function HotelsContent() {
-  const { hotels, isLoading } = useSelector((state: IRootState) => state.searchedHotels);
+  const { searchedHotels, isLoading } = useSelector((state: IRootState) => state.searchedHotels);
   const { t } = useTranslation('common');
 
   if (isLoading) {
@@ -21,11 +21,11 @@ function HotelsContent() {
           {t('hotelsCount')}
           ։
           {' '}
-          {hotels.length}
+          {searchedHotels.length}
         </h2>
       </div>
-      {hotels.length ? hotels.map((hotel: IHotelDB) => (
-        <Hotel key={hotel._id} img={hotel.images[0].thumbUrl} name={hotel.name} region={hotel.region} star={hotel.star} />
+      {searchedHotels.length ? searchedHotels.map((hotel: IHotelDB) => (
+        <Hotel key={hotel._id} id={hotel._id} img={hotel.images[0].thumbUrl} name={hotel.name} region={hotel.region} star={hotel.star} description={hotel.description} />
       )) : <Title level={4}>{t('thereIsNoHotelsPara')}</Title>}
     </div>
   );

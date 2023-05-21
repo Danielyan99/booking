@@ -1,6 +1,7 @@
 export interface IHotel {
   name: string;
   region: string;
+  description: string;
   star: number;
   cancellationPolicy: Array<string>;
   facilities: Array<string>;

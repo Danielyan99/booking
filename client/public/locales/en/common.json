@@ -75,5 +75,6 @@
   "bestHotelsPara": "Hotels With High Rating",
   "whereAreYouGoing": "Where are you going?",
   "search": "Search",
-  "hotelsCount": "Hotels Count"
+  "hotelsCount": "Hotels Count",
+  "description": "Description"
 }

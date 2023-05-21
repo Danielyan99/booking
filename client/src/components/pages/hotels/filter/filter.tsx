@@ -1,12 +1,14 @@
 import React, { memo } from 'react';
 import { Button, Checkbox, Form } from 'antd';
 import { useTranslation } from 'next-i18next';
+import { useAppDispatch } from '@src/core/store';
+import { filter } from '@src/core/store/features/searched-hotels/searchedHotelSlice';
 
 function Filter() {
   const { t } = useTranslation('common');
-
+  const dispatch = useAppDispatch();
   const handleSubmit = (data: any) => {
-    console.log(data);
+    dispatch(filter(data));
   };
   return (
     <div className='filter'>
@@ -18,8 +20,9 @@ function Filter() {
           <Checkbox.Group>
             <Checkbox value='1'>{t('1')}</Checkbox>
             <Checkbox value='2'>{t('2')}</Checkbox>
-            <Checkbox value='4'>{t('3')}</Checkbox>
-            <Checkbox value='5'>{t('4')}</Checkbox>
+            <Checkbox value='3'>{t('3')}</Checkbox>
+            <Checkbox value='4'>{t('4')}</Checkbox>
+            <Checkbox value='5'>{t('5')}</Checkbox>
           </Checkbox.Group>
         </Form.Item>
         <Form.Item className='filter-item' name='cancellationPolicy' label={t('cancellationPolicy') || 'Cancellation Policy'}>

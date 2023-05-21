@@ -33,7 +33,7 @@ function HotelsList() {
       {hotels.length
         ? (
           <div className='hotels'>
-            <Row gutter={3}>
+            <Row gutter={[4, 4]}>
               {hotels.map((hotel: IHotelDB) => (
                 <Col span={6} key={hotel._id} onClick={() => setCurrentOpenedHotelData({ ...hotel })}>
                   <Hotel

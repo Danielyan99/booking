@@ -11,6 +11,9 @@ export class Hotel {
   region: string;
 
   @Prop({ required: true })
+  description: string;
+
+  @Prop({ required: true })
   star: number;
 
   @Prop()

@@ -7,6 +7,8 @@ import HotelController from '@src/core/controllers/HotelController';
 import { IHotel } from '@src/core/modules/hotel/types';
 import { useTranslation } from 'next-i18next';
 
+const { TextArea } = Input;
+
 function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } : IEditHotelModalProps) {
   const [form] = Form.useForm();
   const { t } = useTranslation('common');
@@ -46,6 +48,7 @@ function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } 
         initialValues={{
           name: currentOpenedHotelData.name,
           region: currentOpenedHotelData.region,
+          description: currentOpenedHotelData.description,
           star: currentOpenedHotelData.star,
           cancellationPolicy: currentOpenedHotelData.cancellationPolicy,
           facilities: currentOpenedHotelData.facilities,
@@ -60,6 +63,9 @@ function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } 
         </Form.Item>
         <Form.Item name='name' rules={regionRules()} className='modal-input'>
           <Input placeholder={t('name') || 'Name'} />
+        </Form.Item>
+        <Form.Item name='description'>
+          <TextArea rows={4} placeholder={t('description') || 'description'} />
         </Form.Item>
         <Form.Item name='star' label={t('star')} rules={[{ required: true }]}>
           <Rate />
@@ -98,7 +104,7 @@ function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } 
           </Checkbox.Group>
         </Form.Item>
         <Form.Item name='images' label={t('upload')} valuePropName='fileList' getValueFromEvent={normFile}>
-          <Upload listType='picture-card' multiple accept='.png,.jpeg,.jpg,.webp' beforeUpload={() => false}>
+          <Upload listType='picture-card' multiple accept='.png,.jpeg,.jpg,.webp' beforeUpload={() => false} className='edit-hotel__modal-upload'>
             <div>
               <PlusOutlined />
               {t('upload')}
