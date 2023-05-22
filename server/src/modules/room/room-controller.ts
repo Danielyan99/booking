@@ -44,4 +44,9 @@ export class RoomController {
   getRoomsFromHotel(@Query() { hotelId }) {
     return this.roomService.getRoomsFromHotel(hotelId);
   }
+
+  @Put('/reserveRoom:id')
+  reserveRoom(@Param() params: { id: string }, @Body() roomData) {
+    return this.roomService.reserveRoom(params.id, roomData);
+  }
 }

@@ -48,6 +48,7 @@
     "import/no-mutable-exports": "off",
     "no-shadow": "off",
     "no-underscore-dangle": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-nested-ternary": "off"
   }
 }

@@ -40,4 +40,14 @@ export class RoomService {
     const hotel = await this.hotelModel.findById(hotelId).populate('rooms');
     return hotel.rooms;
   }
+
+  reserveRoom(id, data) {
+    return this.roomModel.findByIdAndUpdate(
+      id,
+      {
+        $set: data,
+      },
+      { new: true },
+    );
+  }
 }

@@ -26,3 +26,30 @@
     }
   }
 }
+
+.hotel-room {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ddd;
+  padding: 1rem;
+  &__left {
+    margin-right: 4rem;
+  }
+  &__content {
+    display: flex;
+  }
+  &.selected {
+    border: 2px solid #1CB5E0;
+    border-radius: 1rem;
+  }
+}
+
+.room-total {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+  h3 {
+    margin-right: 1rem;
+  }
+}

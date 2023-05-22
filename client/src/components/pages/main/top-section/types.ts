@@ -1,4 +1,6 @@
+import { Dayjs } from 'dayjs';
+
 export interface ISearchData {
   place: string;
-  date: Array<string>
+  date: Array<Dayjs>
 }

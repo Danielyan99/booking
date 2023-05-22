@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
-import { message, Modal, Spin } from 'antd';
+import { Button, message, Modal, Spin } from 'antd';
 import { useTranslation } from 'next-i18next';
 import { IRoomsModalProps } from '@src/components/pages/hotels/hotels-inner/rooms-modal/types';
 import RoomController from '@src/core/controllers/RoomController';
@@ -9,8 +9,9 @@ import Room from '@src/components/pages/hotels/hotels-inner/rooms-modal/room';
 
 function RoomsModal({ isModalOpen, closeModal, id }: IRoomsModalProps) {
   const { t } = useTranslation('common');
-  const [hotelRooms, setHotelRooms] = useState<any>(null);
+  const [hotelRooms, setHotelRooms] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [selectedRoom, setSelectedRoom] = useState<any>(null);
 
   useEffect(() => {
     if (!isModalOpen) return;
@@ -27,7 +28,6 @@ function RoomsModal({ isModalOpen, closeModal, id }: IRoomsModalProps) {
     })();
   }, [isModalOpen]);
 
-  console.log(hotelRooms, 'hotelRooms');
   return (
     <div>
       <Modal
@@ -36,11 +36,20 @@ function RoomsModal({ isModalOpen, closeModal, id }: IRoomsModalProps) {
         footer={false}
         onCancel={closeModal}
       >
-        {/* eslint-disable-next-line no-nested-ternary */}
         {isLoading ? <Spin size='large' />
-          : hotelRooms.length ? hotelRooms.map((room: IRoom) => (
-            <Room key={room._id} />
-          )) : <Title level={4}>{t('thereIsNoRoomsPara')}</Title>}
+          : hotelRooms.length ? (
+            <div>
+              {hotelRooms.map((room: IRoom) => (
+                <Room key={room._id} name={room.name} price={room.price} id={room._id} setSelectedRoom={setSelectedRoom} selectedRoomId={selectedRoom?.id} />
+              ))}
+              {selectedRoom && (
+                <div className='room-total'>
+                  <h3>Total 450$</h3>
+                  <Button>Book</Button>
+                </div>
+              )}
+            </div>
+          ) : <Title level={4}>{t('thereIsNoRoomsPara')}</Title>}
       </Modal>
     </div>
   );
