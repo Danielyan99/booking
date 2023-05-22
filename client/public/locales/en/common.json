@@ -76,5 +76,8 @@
   "whereAreYouGoing": "Where are you going?",
   "search": "Search",
   "hotelsCount": "Hotels Count",
-  "description": "Description"
+  "description": "Description",
+  "book": "Book",
+  "advantages": "Advantages",
+  "pleaseSignInToBook": "Please Sign In For Booking"
 }

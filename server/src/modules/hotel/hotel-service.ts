@@ -49,13 +49,14 @@ export class HotelService {
   }
 
   async getHotelsBySearch(searchKey) {
+    const reg = new RegExp(searchKey, 'i');
     return this.hotelModel.find({
       $or: [
         {
-          name: { $regex: searchKey },
+          name: { $regex: reg },
         },
         {
-          region: { $regex: searchKey },
+          region: { $regex: reg },
         },
       ],
     });

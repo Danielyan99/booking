@@ -44,3 +44,30 @@
     }
   }
 }
+
+.current-hotel {
+  padding: 2rem 0;
+  .hotel-top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .hotel-images {
+    .hotel-images__item {
+      margin: 0.2rem;
+    }
+  }
+
+  .hotel-bottom {
+    display: flex;
+    .hotel-description {
+      font-size: 1rem;
+    }
+    .hotel-advantages {
+      border: 2px solid #ddd;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin-left: 1.5rem;
+    }
+  }
+}

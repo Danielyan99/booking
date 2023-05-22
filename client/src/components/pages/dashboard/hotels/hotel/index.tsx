@@ -21,7 +21,7 @@ function Hotel({ name, id, star, images, region, setIsEditHotelModalOpen, setIsA
     <Card
       hoverable
       cover={(
-        <Carousel dots={{ className: 'dots' }} autoplay>
+        <Carousel dots={{ className: 'dots' }}>
           {images.map((img, i) => (<img key={img.uid || i} src={img.thumbUrl} alt='hotel-img' />))}
         </Carousel>
 )}

@@ -76,5 +76,8 @@
   "whereAreYouGoing": "Որտեղ եք Ցանկանում գնալ",
   "search": "Որոնել",
   "hotelsCount": "Հյուրանոցների քանակը",
-  "description": "Նկարագրություն"
+  "description": "Նկարագրություն",
+  "book": "Ամրագրել",
+  "advantages": "Առավելություններ",
+  "pleaseSignInToBook": "Ամրագրելու Համար Մուտք Գործեք Համակարգ"
 }
