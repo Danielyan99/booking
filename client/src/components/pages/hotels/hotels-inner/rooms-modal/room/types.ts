@@ -12,6 +12,6 @@ export interface IHotelRoom {
   name: string;
   id: string;
   selectedRoomId: string;
-  reservedDates: [IDateFromStorage]
+  reservedDates: Array<IDateFromStorage>
   setSelectedRoom: Dispatch<SetStateAction<IHotelRoomTotal>>
 }

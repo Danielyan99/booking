@@ -8,10 +8,10 @@ import Title from 'antd/lib/typography/Title';
 import Room from '@src/components/pages/hotels/hotels-inner/rooms-modal/room';
 import { IDateFromStorage } from '@src/core/types/dates';
 import dayjs from 'dayjs';
-import RoomService from '@src/core/services/RoomService';
 
-function RoomsModal({ isModalOpen, closeModal, id }: IRoomsModalProps) {
+function RoomsModal({ isModalOpen, closeModal, id, userId }: IRoomsModalProps) {
   const { t } = useTranslation('common');
+
   const [hotelRooms, setHotelRooms] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedRoom, setSelectedRoom] = useState<any>(null);
@@ -47,9 +47,9 @@ function RoomsModal({ isModalOpen, closeModal, id }: IRoomsModalProps) {
 
   const bookRoomHandler = async () => {
     const dates = JSON.parse(localStorage.getItem('dates') as any);
-    const data = { startDate: dates.startDate, endDate: dates.endDate };
+    const data = { date: { startDate: dates.startDate, endDate: dates.endDate }, userId };
     try {
-      await RoomService.reserveRoom(selectedRoom.id, data);
+      await RoomController.reserveRoom(selectedRoom.id, data);
       message.success(t('roomSuccessfullyWasBooked'));
     } catch (err) {
       message.error(t('somethingWentWrongMessage'));

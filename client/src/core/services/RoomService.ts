@@ -21,7 +21,7 @@ export default class RoomService {
     return $api.get<AuthResponse>(`/room/getHotelRooms?hotelId=${id}`);
   }
 
-  static reserveRoom(id: string, data: IDateFromStorage): Promise<AxiosResponse<AuthResponse>> {
+  static reserveRoom(id: string, data: { date: IDateFromStorage, userId: string }): Promise<AxiosResponse<AuthResponse>> {
     return $api.put<AuthResponse>(`/room/reserveRoom/${id}`, data);
   }
 }

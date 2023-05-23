@@ -20,7 +20,7 @@ export default class RoomController {
     return RoomService.getHotelRooms(id);
   }
 
-  static reserveRoom(id: string, data: IDateFromStorage) {
+  static reserveRoom(id: string, data: { date: IDateFromStorage, userId: string }) {
     return RoomService.reserveRoom(id, data);
   }
 }

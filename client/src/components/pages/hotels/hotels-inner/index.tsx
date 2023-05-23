@@ -53,7 +53,7 @@ function HotelInner({ hotel }: { hotel: IHotelDB }) {
           />
         </div>
       </div>
-      <RoomsModal isModalOpen={isRoomsModalOpen} id={hotel._id} closeModal={() => setIsRoomsModalOpen(false)} />
+      <RoomsModal isModalOpen={isRoomsModalOpen} id={hotel._id} closeModal={() => setIsRoomsModalOpen(false)} userId={user?.id} />
     </div>
   );
 }
