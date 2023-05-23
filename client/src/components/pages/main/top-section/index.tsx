@@ -14,8 +14,10 @@ function TopSection() {
   const disabledDate: RangePickerProps['disabledDate'] = (current) => current && current < dayjs().endOf('day');
 
   const searchHandler = (data: ISearchData) => {
-    const dates = { startDate: data.date[0], endDate: data.date[1] };
-    localStorage.setItem('dates', JSON.stringify(dates));
+    if (data.date) {
+      const dates = { startDate: data.date[0], endDate: data.date[1] };
+      localStorage.setItem('dates', JSON.stringify(dates));
+    }
     Router.push({ pathname: '/hotels', query: { searchKey: data.place } });
   };
 

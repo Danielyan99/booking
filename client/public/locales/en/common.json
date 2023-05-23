@@ -79,5 +79,10 @@
   "description": "Description",
   "book": "Book",
   "advantages": "Advantages",
-  "pleaseSignInToBook": "Please Sign In For Booking"
+  "pleaseSignInToBook": "Please Sign In For Booking",
+  "filterBy": "Filter By",
+  "roomNumber": "Room Number",
+  "roomPrice": "Room Price",
+  "perNight": "Per Night",
+  "reserved": "Reserved"
 }

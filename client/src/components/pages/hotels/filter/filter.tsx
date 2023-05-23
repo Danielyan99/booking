@@ -13,7 +13,10 @@ function Filter() {
   return (
     <div className='filter'>
       <div className='filter-item'>
-        <h3 className='filter-title'>Filter By:</h3>
+        <h3 className='filter-title'>
+          {t('filterBy')}
+          :
+        </h3>
       </div>
       <Form name='filter' onFinish={handleSubmit}>
         <Form.Item className='filter-item' name='star' label={t('star')}>

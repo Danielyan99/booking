@@ -56,7 +56,7 @@ function RoomsModal({ isModalOpen, closeModal, id }: IRoomsModalProps) {
     }
     closeModal();
   };
-  // check and disable if it's reserved
+
   return (
     <div>
       <Modal
@@ -69,7 +69,15 @@ function RoomsModal({ isModalOpen, closeModal, id }: IRoomsModalProps) {
           : hotelRooms.length ? (
             <div>
               {hotelRooms.map((room: IRoom) => (
-                <Room key={room._id} name={room.name} price={room.price} id={room._id} setSelectedRoom={setSelectedRoom} selectedRoomId={selectedRoom?.id} />
+                <Room
+                  key={room._id}
+                  name={room.name}
+                  price={room.price}
+                  id={room._id}
+                  setSelectedRoom={setSelectedRoom}
+                  selectedRoomId={selectedRoom?.id}
+                  reservedDates={room.reservedDates}
+                />
               ))}
               {selectedRoom && (
                 <div className='room-total'>
