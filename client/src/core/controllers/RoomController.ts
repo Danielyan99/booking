@@ -1,5 +1,6 @@
 import { IRoom } from '@src/core/modules/room/types';
 import RoomService from '@src/core/services/RoomService';
+import { IDateFromStorage } from '@src/core/types/dates';
 
 export default class RoomController {
   static createRoom(id: string, data: IRoom) {
@@ -17,5 +18,9 @@ export default class RoomController {
 
   static getHotelRooms(id: string) {
     return RoomService.getHotelRooms(id);
+  }
+
+  static reserveRoom(id: string, data: IDateFromStorage) {
+    return RoomService.reserveRoom(id, data);
   }
 }

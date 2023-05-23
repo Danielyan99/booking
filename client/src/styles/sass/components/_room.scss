@@ -48,8 +48,19 @@
 .room-total {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   padding: 1rem;
-  h3 {
+  h2 {
     margin-right: 1rem;
+  }
+  h3 {
+    margin-right: 2rem;
+  }
+  h5 {
+    margin: 0 0.3rem;
+  }
+  &__dates {
+    display: flex;
+    margin-right: 2rem;
   }
 }

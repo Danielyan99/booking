@@ -41,13 +41,9 @@ export class RoomService {
     return hotel.rooms;
   }
 
-  reserveRoom(id, data) {
-    return this.roomModel.findByIdAndUpdate(
-      id,
-      {
-        $set: data,
-      },
-      { new: true },
-    );
+  async reserveRoom(id, data) {
+    const room = await this.roomModel.findById(id);
+    room.reservedDates.push(data);
+    return room.save();
   }
 }

@@ -6,12 +6,17 @@ import RoomController from '@src/core/controllers/RoomController';
 import { IRoom } from '@src/core/modules/room/types';
 import Title from 'antd/lib/typography/Title';
 import Room from '@src/components/pages/hotels/hotels-inner/rooms-modal/room';
+import { IDateFromStorage } from '@src/core/types/dates';
+import dayjs from 'dayjs';
+import RoomService from '@src/core/services/RoomService';
 
 function RoomsModal({ isModalOpen, closeModal, id }: IRoomsModalProps) {
   const { t } = useTranslation('common');
   const [hotelRooms, setHotelRooms] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedRoom, setSelectedRoom] = useState<any>(null);
+  const [date, setDate] = useState<any>(null);
+  const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
     if (!isModalOpen) return;
@@ -28,6 +33,30 @@ function RoomsModal({ isModalOpen, closeModal, id }: IRoomsModalProps) {
     })();
   }, [isModalOpen]);
 
+  useEffect(() => {
+    let dates = localStorage.getItem('dates') as unknown as IDateFromStorage;
+    if (dates !== null && selectedRoom) {
+      dates = JSON.parse(dates as unknown as string);
+      const startDate = dayjs(dates.startDate);
+      const endDate = dayjs(dates.endDate);
+      const diff = endDate.diff(startDate, 'day');
+      setTotal(diff * selectedRoom.price);
+      setDate({ startDate: startDate.format('DD/MM/YYYY'), endDate: endDate.format('DD/MM/YYYY') });
+    }
+  }, [selectedRoom]);
+
+  const bookRoomHandler = async () => {
+    const dates = JSON.parse(localStorage.getItem('dates') as any);
+    const data = { startDate: dates.startDate, endDate: dates.endDate };
+    try {
+      await RoomService.reserveRoom(selectedRoom.id, data);
+      message.success(t('roomSuccessfullyWasBooked'));
+    } catch (err) {
+      message.error(t('somethingWentWrongMessage'));
+    }
+    closeModal();
+  };
+  // check and disable if it's reserved
   return (
     <div>
       <Modal
@@ -44,8 +73,20 @@ function RoomsModal({ isModalOpen, closeModal, id }: IRoomsModalProps) {
               ))}
               {selectedRoom && (
                 <div className='room-total'>
-                  <h3>Total 450$</h3>
-                  <Button>Book</Button>
+                  {date ? (
+                    <div className='room-total__dates'>
+                      <h4>{date.startDate}</h4>
+                      <h5>-</h5>
+                      <h4>{date.endDate}</h4>
+                    </div>
+                  ) : <h3>{t('noDatesSelected')}</h3>}
+                  <h2>
+                    Total
+                    {' '}
+                    {total}
+                    $
+                  </h2>
+                  <Button size='large' disabled={!date} onClick={bookRoomHandler}>Book</Button>
                 </div>
               )}
             </div>
