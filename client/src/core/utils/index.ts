@@ -28,3 +28,16 @@ export function isDatesOverlap(currentDates: Array<IDateFromStorage>) {
 
   return isReserved;
 }
+
+export function getReservedUserRooms(data: any) {
+  return data.reservedRooms.map((room: any) => {
+    data.rooms.forEach((r: any) => {
+      if (room.roomId === r._id) {
+        room.room = r;
+      }
+    });
+    room.dates.endDate = dayjs(room.dates.endDate).format('DD/MM/YYYY');
+    room.dates.startDate = dayjs(room.dates.startDate).format('DD/MM/YYYY');
+    return room;
+  });
+}

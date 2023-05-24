@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Res, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res, Req, UseGuards, Param } from '@nestjs/common';
 import { UserService } from './user-service';
 import { SignupDto } from './dto/signup-dto';
 import { User } from './user-model';
@@ -49,5 +49,10 @@ export class UserController {
   @UseGuards(JwtAuthGuard, RolesGuard)
   async getAllUsers(): Promise<User[]> {
     return await this.userService.findAll();
+  }
+
+  @Get('/rooms/:id')
+  async getRooms(@Param() params: { id: string }) {
+    return await this.userService.getRooms(params.id);
   }
 }

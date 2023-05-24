@@ -7,3 +7,13 @@
     display: none;
   }
 }
+
+.reserved-room__card{
+  margin-bottom: 1rem;
+  .reserved-room__user {
+    display: flex;
+    .titles {
+      min-width: 280px;
+    }
+  }
+}

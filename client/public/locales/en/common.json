@@ -84,5 +84,10 @@
   "roomNumber": "Room Number",
   "roomPrice": "Room Price",
   "perNight": "Per Night",
-  "reserved": "Reserved"
+  "reserved": "Reserved",
+  "thereIsNoReservedRooms": "There Is No Reserved Rooms Yet",
+  "hotelName": "Hotel Name",
+  "regionName": "Region Name",
+  "roomName": "Room Name",
+  "dates": "Dates"
 }

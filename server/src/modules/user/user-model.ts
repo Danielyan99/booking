@@ -17,8 +17,11 @@ export class User extends Document {
   @Prop()
   role: RolesEnum;
 
+  @Prop()
+  reservedRooms: Array<{ dates: Array<{ startDate: string; endDate: string }>; roomId: string }>;
+
   @Prop({ type: [{ type: Types.ObjectId, ref: Room.name }] })
-  reservedRooms: Array<{ dates: Array<{ startDate: string; endDate: string }>; room: Room[] }>;
+  rooms: Room[];
 
   @Prop()
   dates: Map<any, any>;

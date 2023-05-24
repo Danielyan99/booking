@@ -9,7 +9,7 @@ import Room from '@src/components/pages/hotels/hotels-inner/rooms-modal/room';
 import { IDateFromStorage } from '@src/core/types/dates';
 import dayjs from 'dayjs';
 
-function RoomsModal({ isModalOpen, closeModal, id, userId }: IRoomsModalProps) {
+function RoomsModal({ isModalOpen, closeModal, id, userId, hotelName, hotelRegion }: IRoomsModalProps) {
   const { t } = useTranslation('common');
 
   const [hotelRooms, setHotelRooms] = useState<any>([]);
@@ -47,7 +47,7 @@ function RoomsModal({ isModalOpen, closeModal, id, userId }: IRoomsModalProps) {
 
   const bookRoomHandler = async () => {
     const dates = JSON.parse(localStorage.getItem('dates') as any);
-    const data = { date: { startDate: dates.startDate, endDate: dates.endDate }, userId };
+    const data = { date: { startDate: dates.startDate, endDate: dates.endDate }, userId, hotelData: { name: hotelName, region: hotelRegion }, totalPrice: total };
     try {
       await RoomController.reserveRoom(selectedRoom.id, data);
       message.success(t('roomSuccessfullyWasBooked'));

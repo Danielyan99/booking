@@ -89,4 +89,11 @@ export class UserService {
     const users = await this.userModel.find();
     return users;
   }
+
+  async getRooms(id) {
+    const user = await this.userModel.findById(id);
+    const data = await user.populate('rooms');
+    const reservedRooms = user.reservedRooms;
+    return { reservedRooms, rooms: data.rooms };
+  }
 }

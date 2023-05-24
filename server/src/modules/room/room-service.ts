@@ -48,24 +48,17 @@ export class RoomService {
 
   async reserveRoom(id, data) {
     const room = await this.roomModel.findById(id);
-    const user = await this.userModel.findById(data.userId);
     await this.userModel.updateOne(
       { _id: data.userId },
       {
         $push: {
-          reservedRooms: { dates: data.date, room: id },
+          reservedRooms: { dates: data.date, roomId: id, hotelData: data.hotelData, totalPrice: data.totalPrice },
         },
       },
     );
-    await user.save();
+    await this.userModel.findByIdAndUpdate(data.userId, { $addToSet: { rooms: id } });
+
     room.reservedDates.push(data.date);
-    // return room.save();
-    return 150;
+    return room.save();
   }
 }
-
-// await this.userModel.findByIdAndUpdate(data.userId, { $addToSet: { reservedRooms: { dates: data.date, room: id } } });
-
-//  const user = await this.userModel.findById(data.userId);
-//  user.reservedRooms.push({ dates: data.date, room: id });
-//  await user.save();
