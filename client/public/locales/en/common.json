@@ -90,5 +90,8 @@
   "regionName": "Region Name",
   "roomName": "Room Name",
   "dates": "Dates",
-  "roomSuccessfullyWasBooked": "Room was Successfully Booked"
+  "roomSuccessfullyWasBooked": "Room was Successfully Booked",
+  "facilities": "Facilities",
+  "funThings": "Fun things to do",
+  "meals": "Meals"
 }

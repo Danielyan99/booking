@@ -35,7 +35,7 @@ function Filter() {
             <Checkbox value='noPrepayment'>{t('noPrepayment')}</Checkbox>
           </Checkbox.Group>
         </Form.Item>
-        <Form.Item className='filter-item' name='facilities' label='Facilities'>
+        <Form.Item className='filter-item' name='facilities' label={t('facilities') || 'Facilities'}>
           <Checkbox.Group>
             <Checkbox value='swimmingPool'>{t('swimmingPool')}</Checkbox>
             <Checkbox value='spaCenter'>{t('spaCenter')}</Checkbox>
@@ -46,7 +46,7 @@ function Filter() {
             <Checkbox value='restaurant'>{t('restaurant')}</Checkbox>
           </Checkbox.Group>
         </Form.Item>
-        <Form.Item className='filter-item' name='funThings' label='Fun things to do'>
+        <Form.Item className='filter-item' name='funThings' label={t('funThings') || 'Fun things to do'}>
           <Checkbox.Group>
             <Checkbox value='beach'>{t('beach')}</Checkbox>
             <Checkbox value='massage'>{t('massage')}</Checkbox>

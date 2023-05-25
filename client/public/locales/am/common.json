@@ -90,5 +90,8 @@
   "regionName": "Տարածաշրջանի նվանումը",
   "roomName": "Համարի Անվանումը",
   "dates": "Ժամանակահատված",
-  "roomSuccessfullyWasBooked": "Համարը հաջողությամբ Ամրագրվեց"
+  "roomSuccessfullyWasBooked": "Համարը հաջողությամբ Ամրագրվեց",
+  "facilities": "Հարմարություններ",
+  "funThings": "Զբաղմունքներ",
+  "meals": "Սնունդ"
 }
