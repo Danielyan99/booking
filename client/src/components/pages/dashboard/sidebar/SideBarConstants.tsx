@@ -25,6 +25,7 @@ function getItem(
 export const getSidebarAdminMenuItems = () => {
   const sidebarAdminMenuItems: MenuItem[] = [
     getItem(i18n?.t('hotels'), 'hotels', <PieChartOutlined />, null, () => Router.push({ query: { tab: 'hotels' } })),
+    getItem(i18n?.t('reservedRooms'), 'admin-rooms', <PieChartOutlined />, null, () => Router.push({ query: { tab: 'admin-rooms' } })),
     getItem(i18n?.t('settings'), 'settings', <UserOutlined />, null, () => Router.push({ query: { tab: 'settings' } })),
   ];
 

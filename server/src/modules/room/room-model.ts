@@ -8,6 +8,9 @@ export class Room {
   @Prop({ required: true })
   price: number;
 
+  @Prop({ required: true })
+  hotelData: Map<any, any>;
+
   @Prop()
   reservedDates: Array<{ startDate: string; endDate: string }>;
 }

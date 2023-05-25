@@ -17,3 +17,17 @@
     }
   }
 }
+
+.reserved-room__admin {
+  display: flex;
+  .titles {
+    min-width: 280px;
+  }
+  .room-total__dates {
+    display: flex;
+    flex-direction: column;
+    .admin-room__dates {
+      display: flex;
+    }
+  }
+}

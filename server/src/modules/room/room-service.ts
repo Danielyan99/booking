@@ -61,4 +61,9 @@ export class RoomService {
     room.reservedDates.push(data.date);
     return room.save();
   }
+
+  async getReservedRooms() {
+    const rooms = await this.roomModel.find();
+    return rooms.filter((room) => room.reservedDates.length);
+  }
 }

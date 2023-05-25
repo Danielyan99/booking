@@ -37,7 +37,6 @@ function ReservedRoom({ dates, name, totalPrice, hotelData }: IProps) {
           </div>
         </div>
       </div>
-
     </Card>
   );
 }

@@ -49,4 +49,9 @@ export class RoomController {
   reserveRoom(@Param() params: { id: string }, @Body() roomData) {
     return this.roomService.reserveRoom(params.id, roomData);
   }
+
+  @Get('/reservedRooms')
+  getReservedRooms() {
+    return this.roomService.getReservedRooms();
+  }
 }

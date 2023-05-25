@@ -6,11 +6,12 @@ import RoomController from '@src/core/controllers/RoomController';
 import { nameRules } from '@src/components/pages/dashboard/hotels/add-room-modal/validation';
 import { useTranslation } from 'next-i18next';
 
-function AddRoomModal({ isModalOpen, setIsModalOpen, hotelId } :IAddRoomModalProps) {
+function AddRoomModal({ isModalOpen, setIsModalOpen, hotelId, hotelRegion, hotelName } :IAddRoomModalProps) {
   const [form] = Form.useForm();
   const { t } = useTranslation('common');
 
   const handleSubmit = async (data: IRoom) => {
+    data.hotelData = { hotelName, hotelRegion };
     const response = await RoomController.createRoom(hotelId, data);
     if (response.data && !response.error) {
       message.success('Room was successfully created');

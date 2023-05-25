@@ -89,5 +89,6 @@
   "hotelName": "Hotel Name",
   "regionName": "Region Name",
   "roomName": "Room Name",
-  "dates": "Dates"
+  "dates": "Dates",
+  "roomSuccessfullyWasBooked": "Room was Successfully Booked"
 }

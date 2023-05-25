@@ -54,7 +54,13 @@ function HotelsList() {
         : <Title>{t('thereIsNoHotelsPara')}</Title>}
       {error && <div className='error-message'>{error}</div>}
       <EditHotelModal isModalOpen={isAddHotelModalOpen} setIsModalOpen={setIsEditHotelModalOpen} currentOpenedHotelData={currentOpenedHotelData} />
-      <AddRoomModal isModalOpen={isAddRoomModalOpen} setIsModalOpen={setIsAddRoomModalOpen} hotelId={currentOpenedHotelData._id} />
+      <AddRoomModal
+        isModalOpen={isAddRoomModalOpen}
+        setIsModalOpen={setIsAddRoomModalOpen}
+        hotelId={currentOpenedHotelData._id}
+        hotelName={currentOpenedHotelData.name}
+        hotelRegion={currentOpenedHotelData.region}
+      />
       <AdminRoomsModal isModalOpen={isRoomModalOpen} setIsModalOpen={setIsRoomModalOpen} hotelId={currentOpenedHotelData._id} />
     </div>
   );
