@@ -18,7 +18,6 @@ function RandomRegion({ randomRegion: hotels }: {randomRegion: Array<IHotelDB>})
             img={hotel.images[0].thumbUrl}
             name={hotel.name}
             region={hotel.region}
-            price={150}
           />
         ))}
       </Carousel>

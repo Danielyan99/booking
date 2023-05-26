@@ -29,7 +29,7 @@ function TopSection() {
             <Input size='large' placeholder={t('whereAreYouGoing') || 'Where are you going?'} prefix={<HomeOutlined />} />
           </Form.Item>
           <Form.Item name='date'>
-            <RangePicker size='large' disabledDate={disabledDate} />
+            <RangePicker size='large' disabledDate={disabledDate} placeholder={[t('startDate'), t('endDate')]} />
           </Form.Item>
           <Button size='large' className='search-btn' htmlType='submit'>{t('search')}</Button>
         </Form>

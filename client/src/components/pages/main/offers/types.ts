@@ -10,5 +10,4 @@ export interface IOfferHotel {
   img: string;
   name: string;
   region: string;
-  price: number;
 }

@@ -25,7 +25,6 @@ function BestPlaces({ bestPlaces: hotels }: {bestPlaces: Array<IHotelDB>}) {
             img={hotel.images[0].thumbUrl}
             name={hotel.name}
             region={hotel.region}
-            price={150}
           />
         ))}
       </Carousel>
