@@ -93,5 +93,7 @@
   "roomSuccessfullyWasBooked": "Room was Successfully Booked",
   "facilities": "Facilities",
   "funThings": "Fun things to do",
-  "meals": "Meals"
+  "meals": "Meals",
+  "startDate": "Start Date",
+  "endDate": "End Date"
 }
