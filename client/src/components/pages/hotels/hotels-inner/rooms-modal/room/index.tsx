@@ -21,7 +21,7 @@ function Room({ name, price, id, setSelectedRoom, selectedRoomId, reservedDates 
       <div className='hotel-room__form'>
         <div className='hotel-room__content'>
           <div className='hotel-room__left'>
-            <h3>{t('roomNumber')}</h3>
+            <h3>{t('roomName')}</h3>
             <h3>{t('roomPrice')}</h3>
           </div>
           <div className='hotel-room__right'>
