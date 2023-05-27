@@ -32,7 +32,7 @@ function ReservedRooms() {
   if (isLoading) {
     return <Spin size='large' />;
   }
-  console.log(rooms);
+
   return (
     <div>
       {rooms.length ? rooms.map(({ dates, room, roomId, totalPrice, hotelData }: any) => <ReservedRoom key={roomId} dates={dates} name={room.name} totalPrice={totalPrice} hotelData={hotelData} />) : <Title>{t('thereIsNoReservedRooms')}</Title>}

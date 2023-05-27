@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Res, Req, UseGuards, Param } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res, Req, UseGuards, Param, Put } from '@nestjs/common';
 import { UserService } from './user-service';
 import { SignupDto } from './dto/signup-dto';
 import { User } from './user-model';
@@ -42,6 +42,11 @@ export class UserController {
     const userData = await this.userService.refresh(refreshToken);
     res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
     return userData;
+  }
+
+  @Put('/changePassword/:id')
+  async changePassword(@Param() params: { id: string }, @Body() data) {
+    return await this.userService.changePassword(params.id, data);
   }
 
   @Get('/users')

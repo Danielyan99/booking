@@ -11,7 +11,7 @@ export const getDropdownMenu = () => {
       label: i18n?.t('profile'),
       key: 'profile',
       icon: <SolutionOutlined />,
-      onClick: () => Router.push('/dashboard', { query: 'profile' }),
+      onClick: () => Router.push('/dashboard?tab=settings'),
     },
     {
       label: i18n?.t('dashboard'),

@@ -85,6 +85,19 @@ export class UserService {
     return { ...tokens, ...userDto };
   }
 
+  async changePassword(id, data) {
+    const user = await this.userModel.findById(id);
+    const isPasswordMatched = await bcrypt.compare(data.lastPassword, user.password);
+
+    if (!isPasswordMatched) {
+      throw new BadRequestException('Invalid Password');
+    }
+    const hashedPassword = await bcrypt.hash(data.newPassword, 10);
+
+    user.password = hashedPassword;
+    return await user.save();
+  }
+
   async findAll(): Promise<User[]> {
     const users = await this.userModel.find();
     return users;

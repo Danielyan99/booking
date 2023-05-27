@@ -55,6 +55,7 @@ function RoomsModal({ isModalOpen, closeModal, id, userId, hotelName, hotelRegio
       message.error(t('somethingWentWrongMessage'));
     }
     closeModal();
+    setSelectedRoom(null);
   };
 
   return (
@@ -64,6 +65,7 @@ function RoomsModal({ isModalOpen, closeModal, id, userId, hotelName, hotelRegio
         title={t('rooms')}
         footer={false}
         onCancel={closeModal}
+        width={640}
       >
         {isLoading ? <Spin size='large' />
           : hotelRooms.length ? (
@@ -89,12 +91,12 @@ function RoomsModal({ isModalOpen, closeModal, id, userId, hotelName, hotelRegio
                     </div>
                   ) : <h3>{t('noDatesSelected')}</h3>}
                   <h2>
-                    Total
+                    {t('total')}
                     {' '}
                     {total}
                     $
                   </h2>
-                  <Button size='large' disabled={!date} onClick={bookRoomHandler}>Book</Button>
+                  <Button size='large' disabled={!date} onClick={bookRoomHandler}>{t('book')}</Button>
                 </div>
               )}
             </div>

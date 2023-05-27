@@ -42,7 +42,7 @@ export function passwordRules() {
     },
     {
       min: 6,
-      message: `${i18n?.t('passwordLengthSmallerHint')} 2`,
+      message: `${i18n?.t('passwordLengthSmallerHint')} 6`,
     },
     {
       max: 16,

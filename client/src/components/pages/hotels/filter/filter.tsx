@@ -54,7 +54,7 @@ function Filter() {
             <Checkbox value='diving'>{t('diving')}</Checkbox>
           </Checkbox.Group>
         </Form.Item>
-        <Form.Item className='filter-item' name='meals' label='Meals'>
+        <Form.Item className='filter-item' name='meals' label={t('meals')}>
           <Checkbox.Group>
             <Checkbox value='allInclusive'>{t('allInclusive')}</Checkbox>
             <Checkbox value='breakfast'>{t('breakfast')}</Checkbox>

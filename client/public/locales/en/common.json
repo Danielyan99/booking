@@ -95,5 +95,12 @@
   "funThings": "Fun things to do",
   "meals": "Meals",
   "startDate": "Start Date",
-  "endDate": "End Date"
+  "endDate": "End Date",
+  "total": "Total",
+  "oldPassword": "Old Password",
+  "newPassword": "New Password",
+  "repeatNewPassword": "Repeat New Password",
+  "changePassword": "Change Password",
+  "passwordChangeSuccessMessage": "Password was Successfully changed",
+  "passwordsShouldBeTheSame": "Password Should Be The Same"
 }

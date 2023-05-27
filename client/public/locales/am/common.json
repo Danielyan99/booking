@@ -94,6 +94,13 @@
   "facilities": "Հարմարություններ",
   "funThings": "Զբաղմունքներ",
   "meals": "Սնունդ",
-  "startDate": "Մեկնարկի Ամսաթիվ",
-  "endDate": "Ավարտի Ամսաթիվ"
+  "startDate": "Մեկնարկ",
+  "endDate": "Ավարտ",
+  "total": "Ընդհանուր",
+  "oldPassword": "Վերջին Ծածկագիրը",
+  "newPassword": "Նոր Ծածկագիրը",
+  "repeatNewPassword": "Կրկնեք Նոր Ծածկագիրը",
+  "changePassword": "Փոխել Ծածկագիրը",
+  "passwordChangeSuccessMessage": "Ծածկագիրը հաջողությամբ փոխվեց",
+  "passwordsShouldBeTheSame": "Ծածակգրերը Չեն Համընկնում"
 }

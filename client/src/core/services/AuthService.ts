@@ -18,4 +18,8 @@ export default class AuthService {
   static async logout(): Promise<void> {
     return $api.post('/auth/logout');
   }
+
+  static async changePassword(id: string, data: { newPassword: string, lastPassword: string }): Promise<AxiosResponse<AuthResponse>> {
+    return $api.put<AuthResponse>(`auth/changePassword/${id}`, data);
+  }
 }
