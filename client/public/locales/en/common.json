@@ -21,7 +21,7 @@
   "passwordNotMatchHint": "The passwords do not match",
   "emailIsAlreadyRegisteredHint": "Email is already registered",
   "dashboardAdminMainPageHint": "It is Dashboard page you can see and check here all hotels and add a hotel. Hotels are editable you can change hotel data. You can see rooms of hotels and also edit them.",
-  "dashboardUserMainPageHint": "It is Dashboard page you can see and check here all hotels and add a hotel. Hotels are editable you can change hotel data. You can see rooms of hotels and also edit them.",
+  "dashboardUserMainPageHint": "It is Dashboard page you can see and check your reserved rooms here and also change some profile settings",
   "region": "Region",
   "hotelNameRequiredMessageHint": "Please input hotel name",
   "star": "Star",
