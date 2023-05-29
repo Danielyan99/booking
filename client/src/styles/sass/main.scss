@@ -1,0 +1,40 @@
+// This is the single file output by sass. It is intended to ONLY @import other files.
+
+// abstracts (helpers)
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/functions';
+
+// base (basics)
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/common';
+
+// layout
+@import 'layout/navigation';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/sidebar';
+@import "layout/container";
+
+// components
+@import 'components/buttons';
+@import 'components/logo';
+@import 'components/select';
+@import 'components/messages';
+@import 'components/hotel';
+@import 'components/carousel';
+@import 'components/room';
+@import 'components/offers';
+@import 'components/filter';
+
+// pages
+@import 'pages/home';
+@import 'pages/contact';
+@import 'pages/portfolio';
+@import 'pages/dashboard';
+@import 'pages/hotels';
+
+// themes
+@import 'themes/theme';
+@import 'themes/admin';

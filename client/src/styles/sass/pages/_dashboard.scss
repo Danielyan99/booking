@@ -1,0 +1,33 @@
+.dashboard-main__para {
+  font-size: 2rem;
+}
+
+.edit-hotel__modal-upload {
+  .anticon.anticon-eye {
+    display: none;
+  }
+}
+
+.reserved-room__card{
+  margin-bottom: 1rem;
+  .reserved-room__user {
+    display: flex;
+    .titles {
+      min-width: 280px;
+    }
+  }
+}
+
+.reserved-room__admin {
+  display: flex;
+  .titles {
+    min-width: 280px;
+  }
+  .room-total__dates {
+    display: flex;
+    flex-direction: column;
+    .admin-room__dates {
+      display: flex;
+    }
+  }
+}

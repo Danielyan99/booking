@@ -1,0 +1,66 @@
+.admin-room {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.1rem solid #ddd;
+  margin-bottom: 1rem;
+  &__btns {
+    flex: 0 1 auto;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5rem;
+    span {
+      margin-bottom: 0.5rem;
+    }
+  }
+  &__form {
+    flex: 0 1 auto;
+    width: 100%;
+  }
+  &:last-child {
+    border-bottom: none;
+  }
+  .ant-form-item-required {
+    &::before {
+      display: none !important;
+    }
+  }
+}
+
+.hotel-room {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ddd;
+  padding: 1rem;
+  &__left {
+    margin-right: 4rem;
+  }
+  &__content {
+    display: flex;
+  }
+  &.selected {
+    border: 2px solid #1CB5E0;
+    border-radius: 1rem;
+  }
+}
+
+.room-total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  h2 {
+    margin-right: 1rem;
+  }
+  h3 {
+    margin-right: 2rem;
+  }
+  h5 {
+    margin: 0 0.3rem;
+  }
+  &__dates {
+    display: flex;
+    margin-right: 2rem;
+  }
+}

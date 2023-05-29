@@ -1,0 +1,8 @@
+.slick-dots.slick-dots-bottom.dots {
+  li {
+    background-color: #001529;
+    &.slick-active button {
+      background-color: #1CB5E0;
+    }
+  }
+}
