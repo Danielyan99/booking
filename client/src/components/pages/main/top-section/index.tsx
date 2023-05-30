@@ -17,6 +17,8 @@ function TopSection() {
     if (data.date) {
       const dates = { startDate: data.date[0], endDate: data.date[1] };
       localStorage.setItem('dates', JSON.stringify(dates));
+    } else {
+      localStorage.removeItem('dates');
     }
     Router.push({ pathname: '/hotels', query: { searchKey: data.place } });
   };

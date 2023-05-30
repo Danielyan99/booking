@@ -102,5 +102,6 @@
   "repeatNewPassword": "Repeat New Password",
   "changePassword": "Change Password",
   "passwordChangeSuccessMessage": "Password was Successfully changed",
-  "passwordsShouldBeTheSame": "Password Should Be The Same"
+  "passwordsShouldBeTheSame": "Password Should Be The Same",
+  "admin-rooms": "Rooms"
 }
