@@ -4,7 +4,7 @@ import { Card } from 'antd';
 import { useTranslation } from 'next-i18next';
 import dayjs from 'dayjs';
 
-function Room({ name, price, reservedDates, hotelName, hotelRegion } : IProps) {
+function Room({ name, price, reservedDates, hotelName, hotelRegion, totalProfit } : IProps) {
   const { t } = useTranslation('common');
 
   return (
@@ -15,6 +15,7 @@ function Room({ name, price, reservedDates, hotelName, hotelRegion } : IProps) {
           <h3>{t('regionName')}</h3>
           <h3>{t('roomName')}</h3>
           <h3>{t('price')}</h3>
+          <h3>{t('totalProfit')}</h3>
           <h3>{t('dates')}</h3>
         </div>
         <div className='reserved-room-info'>
@@ -28,6 +29,10 @@ function Room({ name, price, reservedDates, hotelName, hotelRegion } : IProps) {
             <h3>{name}</h3>
             <h3>
               {price}
+              $
+            </h3>
+            <h3>
+              {totalProfit}
               $
             </h3>
           </div>

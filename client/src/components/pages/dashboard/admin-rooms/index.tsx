@@ -64,8 +64,22 @@ function AdminRooms() {
       setIsLoading(true);
       try {
         const roomsResponse = await RoomController.getReservedRooms();
-        setRooms(roomsResponse.data);
-        setFilteredRooms(roomsResponse.data);
+        // @ts-ignore
+        const rooms = roomsResponse.data.map((room: any) => {
+          let totalProfit = 0;
+          room.reservedDates.forEach((date: any) => {
+            const startDate = dayjs(date.startDate);
+            const endDate = dayjs(date.endDate);
+
+            const diff = endDate.diff(startDate, 'day');
+            totalProfit += diff * room.price;
+          });
+
+          room.totalProfit = totalProfit;
+          return room;
+        });
+        setRooms(rooms);
+        setFilteredRooms(rooms);
       } catch (err) {
         message.error(t('somethingWentWrongMessage'));
       } finally {
@@ -81,7 +95,7 @@ function AdminRooms() {
   return (
     <div className='admin-rooms'>
       <AdminRoomsFilter filterHandler={filterHandler} />
-      {filteredRooms.length ? filteredRooms.map((room: any) => <Room key={room._id} name={room.name} price={room.price} reservedDates={room.reservedDates} hotelName={room.hotelData.hotelName} hotelRegion={room.hotelData.hotelRegion} />) : <Title>{t('thereIsNoReservedRooms')}</Title>}
+      {filteredRooms.length ? filteredRooms.map((room: any) => <Room key={room._id} name={room.name} price={room.price} reservedDates={room.reservedDates} hotelName={room.hotelData.hotelName} hotelRegion={room.hotelData.hotelRegion} totalProfit={room.totalProfit} />) : <Title>{t('thereIsNoReservedRooms')}</Title>}
     </div>
   );
 }

@@ -49,6 +49,7 @@
     "no-shadow": "off",
     "no-underscore-dangle": "off",
     "import/prefer-default-export": "off",
-    "no-nested-ternary": "off"
+    "no-nested-ternary": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
   }
 }

@@ -6,4 +6,5 @@ export interface IProps {
   reservedDates: Array<IDateFromStorage>;
   hotelName: string;
   hotelRegion: string;
+  totalProfit: number;
 }

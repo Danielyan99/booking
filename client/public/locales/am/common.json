@@ -102,5 +102,6 @@
   "changePassword": "Փոխել Ծածկագիրը",
   "passwordChangeSuccessMessage": "Ծածկագիրը հաջողությամբ փոխվեց",
   "passwordsShouldBeTheSame": "Ծածակգրերը Չեն Համընկնում",
-  "admin-rooms": "Համարներ"
+  "admin-rooms": "Համարներ",
+  "totalProfit": "Ընդհանուր Եկամուտ"
 }
