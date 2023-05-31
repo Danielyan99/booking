@@ -32,11 +32,11 @@ function Room({ name, price, reservedDates, hotelName, hotelRegion } : IProps) {
             </h3>
           </div>
           <div className='room-total__dates'>
-            {reservedDates.map((date) => {
+            {reservedDates.map((date, i) => {
               const startDate = dayjs(date.startDate).format('DD/MM/YYYY');
               const endDate = dayjs(date.endDate).format('DD/MM/YYYY');
               return (
-                <div className='admin-room__dates'>
+                <div className='admin-room__dates' key={i}>
                   <h4>{startDate}</h4>
                   <h5>-</h5>
                   <h4>{endDate}</h4>

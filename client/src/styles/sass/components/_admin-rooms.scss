@@ -1,5 +1,11 @@
 .admin-rooms {
   &-filter {
     display: flex;
+    .admin-filter__input {
+      min-width: 20rem;
+    }
+    .admin-filter__date {
+      margin: 0 1rem;
+    }
   }
 }
