@@ -1,11 +1,19 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { IProps } from '@src/components/pages/dashboard/admin-rooms/room/types';
-import { Card } from 'antd';
+import { Button, Card } from 'antd';
 import { useTranslation } from 'next-i18next';
 import dayjs from 'dayjs';
 
-function Room({ name, price, reservedDates, hotelName, hotelRegion, totalProfit } : IProps) {
+function Room({ name, price, reservedDates, hotelName, hotelRegion, hotelId, totalProfit, rooms } : IProps) {
   const { t } = useTranslation('common');
+  const [hotelTotalProfit, setHotelTotalProfit] = useState({ hideTotalProfit: true, profit: 0 });
+
+  const totalProfitHandler = () => {
+    const filteredHotelRooms = rooms.filter((room: any) => room.hotelData.id === hotelId);
+    const hotelTotalProfitSum = filteredHotelRooms.reduce((acc: any, room: any) => acc + room.totalProfit, 0);
+
+    setHotelTotalProfit({ hideTotalProfit: !hotelTotalProfit.hideTotalProfit, profit: hotelTotalProfitSum });
+  };
 
   return (
     <Card className='reserved-room__card'>
@@ -49,6 +57,15 @@ function Room({ name, price, reservedDates, hotelName, hotelRegion, totalProfit 
               );
             })}
           </div>
+        </div>
+        <div className='reserved-room__total-profit'>
+          <Button onClick={totalProfitHandler}>{t('seeHotelTotalProfit')}</Button>
+          {!hotelTotalProfit.hideTotalProfit && (
+          <h3 className='profit'>
+            {hotelTotalProfit.profit}
+            $
+          </h3>
+          )}
         </div>
       </div>
     </Card>

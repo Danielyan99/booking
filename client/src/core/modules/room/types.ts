@@ -3,6 +3,6 @@ export interface IRoom {
   name: string;
   hotelId: string;
   reservedDates: [];
-  hotelData: { hotelName: string; hotelRegion: string }
+  hotelData: { name: string; region: string, id: string }
   _id: string;
 }

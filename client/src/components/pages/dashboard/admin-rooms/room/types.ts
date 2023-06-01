@@ -7,4 +7,6 @@ export interface IProps {
   hotelName: string;
   hotelRegion: string;
   totalProfit: number;
+  hotelId: string;
+  rooms: any;
 }

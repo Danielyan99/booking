@@ -11,7 +11,7 @@ function AddRoomModal({ isModalOpen, setIsModalOpen, hotelId, hotelRegion, hotel
   const { t } = useTranslation('common');
 
   const handleSubmit = async (data: IRoom) => {
-    data.hotelData = { hotelName, hotelRegion };
+    data.hotelData = { name: hotelName, region: hotelRegion, id: hotelId };
     const response = await RoomController.createRoom(hotelId, data);
     if (response.data && !response.error) {
       message.success('Room was successfully created');

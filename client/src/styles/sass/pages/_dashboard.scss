@@ -30,4 +30,10 @@
       display: flex;
     }
   }
+  .reserved-room__total-profit {
+    margin: 0 2rem;
+    .profit {
+      text-align: center;
+    }
+  }
 }

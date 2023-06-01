@@ -103,5 +103,6 @@
   "passwordChangeSuccessMessage": "Ծածկագիրը հաջողությամբ փոխվեց",
   "passwordsShouldBeTheSame": "Ծածակգրերը Չեն Համընկնում",
   "admin-rooms": "Համարներ",
-  "totalProfit": "Ընդհանուր Եկամուտ"
+  "totalProfit": "Ընդհանուր Եկամուտ",
+  "seeHotelTotalProfit": "Տեսնել Հյուրանոցի Ընհանուր Եկամուտը"
 }
