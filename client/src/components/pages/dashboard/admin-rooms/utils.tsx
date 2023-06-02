@@ -6,8 +6,8 @@ export const roomsFilterHandler = (copyRooms: any, data: any) => copyRooms.filte
   let isValid = true;
   let isExistingDate = false;
 
-  const { hotelName, hotelRegion } = room.hotelData;
-  if (data.place && !(hotelName.includes(data.place) || hotelRegion.includes(data.place))) {
+  const { name, region } = room.hotelData;
+  if (data.place && !(name.toLowerCase().includes(data.place) || region.toLowerCase().includes(data.place.toLowerCase()))) {
     isValid = false;
   }
   if (data.date) {
