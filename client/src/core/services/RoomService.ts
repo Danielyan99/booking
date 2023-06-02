@@ -14,7 +14,7 @@ export default class RoomService {
   }
 
   static deleteRoom(id: string): Promise<AxiosResponse<AuthResponse>> {
-    return $api.put<AuthResponse>(`/room/${id}`);
+    return $api.delete<AuthResponse>(`/room/${id}`);
   }
 
   static getHotelRooms(id: string): Promise<AxiosResponse<AuthResponse>> {

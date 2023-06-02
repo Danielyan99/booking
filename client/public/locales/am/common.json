@@ -104,5 +104,8 @@
   "passwordsShouldBeTheSame": "Ծածակգրերը Չեն Համընկնում",
   "admin-rooms": "Համարներ",
   "totalProfit": "Ընդհանուր Եկամուտ",
-  "seeHotelTotalProfit": "Տեսնել Հյուրանոցի Ընհանուր Եկամուտը"
+  "seeHotelTotalProfit": "Տեսնել Հյուրանոցի Ընհանուր Եկամուտը",
+  "noDatesSelected": "Ընտրեք որևէ ժամանակահատված",
+  "close": "Փակել",
+  "reservedDates": "Ամրագրված Ամսաթվեր"
 }

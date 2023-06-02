@@ -104,5 +104,8 @@
   "passwordChangeSuccessMessage": "Password was Successfully changed",
   "passwordsShouldBeTheSame": "Password Should Be The Same",
   "admin-rooms": "Rooms",
-  "seeHotelTotalProfit": "See Hotel Total Profit"
+  "seeHotelTotalProfit": "See Hotel Total Profit",
+  "noDatesSelected": "Please select any date",
+  "close": "Close",
+  "reservedDates": "Reserved Dates"
 }

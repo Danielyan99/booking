@@ -65,7 +65,7 @@ function RoomsModal({ isModalOpen, closeModal, id, userId, hotelName, hotelRegio
         title={t('rooms')}
         footer={false}
         onCancel={closeModal}
-        width={640}
+        width={660}
       >
         {isLoading ? <Spin size='large' />
           : hotelRooms.length ? (
