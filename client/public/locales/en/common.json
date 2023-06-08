@@ -107,5 +107,6 @@
   "seeHotelTotalProfit": "See Hotel Total Profit",
   "noDatesSelected": "Please select any date",
   "close": "Close",
-  "reservedDates": "Reserved Dates"
+  "reservedDates": "Reserved Dates",
+  "updateDate": "Update Date"
 }

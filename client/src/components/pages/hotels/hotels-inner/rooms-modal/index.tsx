@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
-import { Button, message, Modal, Spin } from 'antd';
+import { Button, DatePicker, Form, Input, message, Modal, Spin } from 'antd';
 import { useTranslation } from 'next-i18next';
 import { IRoomsModalProps } from '@src/components/pages/hotels/hotels-inner/rooms-modal/types';
 import RoomController from '@src/core/controllers/RoomController';
@@ -8,6 +8,9 @@ import Title from 'antd/lib/typography/Title';
 import Room from '@src/components/pages/hotels/hotels-inner/rooms-modal/room';
 import { IDateFromStorage } from '@src/core/types/dates';
 import dayjs from 'dayjs';
+import { RangePickerProps } from 'antd/lib/date-picker';
+
+const { RangePicker } = DatePicker;
 
 function RoomsModal({ isModalOpen, closeModal, id, userId, hotelName, hotelRegion }: IRoomsModalProps) {
   const { t } = useTranslation('common');
@@ -17,6 +20,7 @@ function RoomsModal({ isModalOpen, closeModal, id, userId, hotelName, hotelRegio
   const [selectedRoom, setSelectedRoom] = useState<any>(null);
   const [date, setDate] = useState<any>(null);
   const [total, setTotal] = useState<number>(0);
+  const disabledDate: RangePickerProps['disabledDate'] = (current) => current && current < dayjs().endOf('day');
 
   useEffect(() => {
     if (!isModalOpen) return;
@@ -58,6 +62,16 @@ function RoomsModal({ isModalOpen, closeModal, id, userId, hotelName, hotelRegio
     setSelectedRoom(null);
   };
 
+  const changeHandler = (data: any) => {
+    if (data.date) {
+      const dates = { startDate: data.date[0], endDate: data.date[1] };
+      localStorage.setItem('dates', JSON.stringify(dates));
+    } else {
+      localStorage.removeItem('dates');
+    }
+    setSelectedRoom(null);
+  };
+
   return (
     <div>
       <Modal
@@ -81,6 +95,14 @@ function RoomsModal({ isModalOpen, closeModal, id, userId, hotelName, hotelRegio
                   reservedDates={room.reservedDates}
                 />
               ))}
+              <div className='change-date'>
+                <Form onFinish={changeHandler}>
+                  <Form.Item name='date'>
+                    <RangePicker size='large' disabledDate={disabledDate} placeholder={[t('startDate'), t('endDate')]} />
+                  </Form.Item>
+                  <Button size='large' className='search-btn' htmlType='submit'>{t('updateDate')}</Button>
+                </Form>
+              </div>
               {selectedRoom && (
                 <div className='room-total'>
                   {date ? (

@@ -65,3 +65,13 @@
     margin-right: 2rem;
   }
 }
+
+.change-date {
+  margin: 1rem 0;
+  display: flex;
+  form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

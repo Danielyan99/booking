@@ -107,5 +107,6 @@
   "seeHotelTotalProfit": "Տեսնել Հյուրանոցի Ընհանուր Եկամուտը",
   "noDatesSelected": "Ընտրեք որևէ ժամանակահատված",
   "close": "Փակել",
-  "reservedDates": "Ամրագրված Ամսաթվեր"
+  "reservedDates": "Ամրագրված Ամսաթվեր",
+  "updateDate": "Update Date"
 }
