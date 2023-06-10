@@ -8,9 +8,9 @@ function Offers({ weOffer, bestPlaces, randomRegion } : ISectionsProps) {
   return (
     <div className='offers'>
       <div className='container'>
-        <WeOffer weOffer={weOffer} />
-        <BestPlaces bestPlaces={bestPlaces} />
-        <RandomRegion randomRegion={randomRegion} />
+        {!!weOffer.length && <WeOffer weOffer={weOffer} />}
+        {!!bestPlaces.length && <BestPlaces bestPlaces={bestPlaces} />}
+        {!!randomRegion.length && <RandomRegion randomRegion={randomRegion} />}
       </div>
     </div>
   );

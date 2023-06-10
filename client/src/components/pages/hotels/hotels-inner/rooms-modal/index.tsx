@@ -9,12 +9,14 @@ import Room from '@src/components/pages/hotels/hotels-inner/rooms-modal/room';
 import { IDateFromStorage } from '@src/core/types/dates';
 import dayjs from 'dayjs';
 import { RangePickerProps } from 'antd/lib/date-picker';
+import { useSelector } from 'react-redux';
+import { IRootState } from '@src/core/store';
 
 const { RangePicker } = DatePicker;
 
 function RoomsModal({ isModalOpen, closeModal, id, userId, hotelName, hotelRegion }: IRoomsModalProps) {
   const { t } = useTranslation('common');
-
+  const { user } = useSelector((state: IRootState) => state.user);
   const [hotelRooms, setHotelRooms] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [selectedRoom, setSelectedRoom] = useState<any>(null);
@@ -51,7 +53,11 @@ function RoomsModal({ isModalOpen, closeModal, id, userId, hotelName, hotelRegio
 
   const bookRoomHandler = async () => {
     const dates = JSON.parse(localStorage.getItem('dates') as any);
-    const data = { date: { startDate: dates.startDate, endDate: dates.endDate }, userId, hotelData: { name: hotelName, region: hotelRegion }, totalPrice: total };
+    const data = { date: { startDate: dates.startDate, endDate: dates.endDate, userEmail: user.email },
+      userId,
+      hotelData: { name: hotelName, region: hotelRegion },
+      totalPrice: total,
+    };
     try {
       await RoomController.reserveRoom(selectedRoom.id, data);
       message.success(t('roomSuccessfullyWasBooked'));
@@ -68,6 +74,7 @@ function RoomsModal({ isModalOpen, closeModal, id, userId, hotelName, hotelRegio
       localStorage.setItem('dates', JSON.stringify(dates));
     } else {
       localStorage.removeItem('dates');
+      setDate(null);
     }
     setSelectedRoom(null);
   };
