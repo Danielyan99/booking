@@ -60,7 +60,7 @@ function AddHotel() {
           <Checkbox value='noPrepayment'>{t('noPrepayment')}</Checkbox>
         </Checkbox.Group>
       </Form.Item>
-      <Form.Item name='facilities' label='Facilities'>
+      <Form.Item name='facilities' label={t('facilities')}>
         <Checkbox.Group>
           <Checkbox value='swimmingPool'>{t('swimmingPool')}</Checkbox>
           <Checkbox value='spaCenter'>{t('spaCenter')}</Checkbox>
@@ -71,7 +71,7 @@ function AddHotel() {
           <Checkbox value='restaurant'>{t('restaurant')}</Checkbox>
         </Checkbox.Group>
       </Form.Item>
-      <Form.Item name='funThings' label='Fun things to do'>
+      <Form.Item name='funThings' label={t('funThings')}>
         <Checkbox.Group>
           <Checkbox value='beach'>{t('beach')}</Checkbox>
           <Checkbox value='massage'>{t('massage')}</Checkbox>
@@ -79,7 +79,7 @@ function AddHotel() {
           <Checkbox value='diving'>{t('diving')}</Checkbox>
         </Checkbox.Group>
       </Form.Item>
-      <Form.Item name='meals' label='Meals'>
+      <Form.Item name='meals' label={t('meals')}>
         <Checkbox.Group>
           <Checkbox value='allInclusive'>{t('allInclusive')}</Checkbox>
           <Checkbox value='breakfast'>{t('breakfast')}</Checkbox>
