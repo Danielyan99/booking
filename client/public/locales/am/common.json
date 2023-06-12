@@ -86,7 +86,7 @@
   "reserved": "Ամրագրված է",
   "thereIsNoReservedRooms": "Ամրագրված Համարներ Դեռևս չկան",
   "hotelName": "Հյուրանոցի Անվանումը",
-  "regionName": "Տարածաշրջանի նվանումը",
+  "regionName": "Տարածաշրջանի Անվանումը",
   "roomName": "Համարի Անվանումը",
   "dates": "Ժամանակահատված",
   "roomSuccessfullyWasBooked": "Համարը հաջողությամբ Ամրագրվեց",
@@ -108,5 +108,5 @@
   "noDatesSelected": "Ընտրեք որևէ ժամանակահատված",
   "close": "Փակել",
   "reservedDates": "Ամրագրված Ամսաթվեր",
-  "updateDate": "Update Date"
+  "updateDate": "Թարմացնել Ամսաթիվը"
 }
