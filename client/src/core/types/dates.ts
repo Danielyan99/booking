@@ -2,5 +2,6 @@ import { Dayjs } from 'dayjs';
 
 export interface IDateFromStorage {
   startDate: Dayjs;
-  endDate: Dayjs
+  endDate: Dayjs;
+  userEmail: string;
 }

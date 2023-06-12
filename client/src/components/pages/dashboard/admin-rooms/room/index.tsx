@@ -53,6 +53,11 @@ function Room({ name, price, reservedDates, hotelName, hotelRegion, hotelId, tot
                   <h4>{startDate}</h4>
                   <h5>-</h5>
                   <h4>{endDate}</h4>
+                  <h4 style={{ marginLeft: '0.4rem' }}>
+                    (
+                    {date.userEmail}
+                    )
+                  </h4>
                 </div>
               );
             })}

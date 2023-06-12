@@ -22,8 +22,15 @@ function Home({ data }: { data: ISectionsProps }) {
 
 export async function getStaticProps({ locale }: { locale: string}) {
   const res = await fetch(`${process.env.API_URL}/hotel/sections`);
-  const data = await res.json();
+  let data = await res.json();
 
+  if (!data) {
+    data = {
+      weOffer: [],
+      bestPlaces: [],
+      randomRegion: [],
+    };
+  }
   return {
     props: {
       data,
