@@ -70,14 +70,14 @@ function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } 
         <Form.Item name='star' label={t('star')} rules={[{ required: true }]}>
           <Rate />
         </Form.Item>
-        <Form.Item name='cancellationPolicy' label='Cancellation Policy'>
+        <Form.Item name='cancellationPolicy' label={t('cancellationPolicy') || 'Cancellation Policy'}>
           <Checkbox.Group>
             <Checkbox value='freeCancellation'>{t('freeCancellation')}</Checkbox>
             <Checkbox value='bookWithoutCreditCard'>{t('bookWithoutCreditCard')}</Checkbox>
             <Checkbox value='noPrepayment'>{t('noPrepayment')}</Checkbox>
           </Checkbox.Group>
         </Form.Item>
-        <Form.Item name='facilities' label='Facilities'>
+        <Form.Item name='facilities' label={t('facilities')}>
           <Checkbox.Group>
             <Checkbox value='swimmingPool'>{t('swimmingPool')}</Checkbox>
             <Checkbox value='spaCenter'>{t('spaCenter')}</Checkbox>
@@ -88,7 +88,7 @@ function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } 
             <Checkbox value='restaurant'>{t('restaurant')}</Checkbox>
           </Checkbox.Group>
         </Form.Item>
-        <Form.Item name='funThings' label='Fun things to do'>
+        <Form.Item name='funThings' label={t('funThings')}>
           <Checkbox.Group>
             <Checkbox value='beach'>{t('beach')}</Checkbox>
             <Checkbox value='massage'>{t('massage')}</Checkbox>
@@ -96,14 +96,14 @@ function EditHotelModal({ isModalOpen, setIsModalOpen, currentOpenedHotelData } 
             <Checkbox value='diving'>{t('diving')}</Checkbox>
           </Checkbox.Group>
         </Form.Item>
-        <Form.Item name='meals' label='Meals'>
+        <Form.Item name='meals' label={t('meals')}>
           <Checkbox.Group>
             <Checkbox value='allInclusive'>{t('allInclusive')}</Checkbox>
             <Checkbox value='breakfast'>{t('breakfast')}</Checkbox>
             <Checkbox value='selfCatering'>{t('selfCatering')}</Checkbox>
           </Checkbox.Group>
         </Form.Item>
-        <Form.Item name='images' label={t('upload')} valuePropName='fileList' getValueFromEvent={normFile}>
+        <Form.Item name='images' label={t('images')} valuePropName='fileList' getValueFromEvent={normFile}>
           <Upload listType='picture-card' multiple accept='.png,.jpeg,.jpg,.webp' beforeUpload={() => false} className='edit-hotel__modal-upload'>
             <div>
               <PlusOutlined />

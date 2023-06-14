@@ -86,7 +86,7 @@ function AddHotel() {
           <Checkbox value='selfCatering'>{t('selfCatering')}</Checkbox>
         </Checkbox.Group>
       </Form.Item>
-      <Form.Item name='images' label={t('upload')} valuePropName='fileList' getValueFromEvent={normFile}>
+      <Form.Item name='images' label={t('images')} valuePropName='fileList' getValueFromEvent={normFile}>
         <Upload listType='picture-card' multiple accept='.png,.jpeg,.jpg,.webp' beforeUpload={() => false} onPreview={handlePreview}>
           <div>
             <PlusOutlined />
